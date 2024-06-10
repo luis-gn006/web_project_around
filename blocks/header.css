@@ -1,12 +1,14 @@
+.header {
+  width: 100%;
+}
 .header__logo {
-  width: 36%;
-  margin-left: 7%;
-  padding-top: 5%;
+  width: 40%;
+  margin-left: 9%;
+  padding-top: 9%;
 }
 .header__line {
-  margin-top: 5%;
-  height: 0.1px;
+  margin-top: 10%;
+  height: 1px;
   background-color: #545454;
-  margin-bottom: 7%;
   width: 100%;
 }
