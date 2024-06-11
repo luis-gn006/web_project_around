@@ -27,7 +27,7 @@
   padding-top: 12%;
 }
 .profile__name {
-  font-size: 21px;
+  font-size: 24px;
   font-weight: 500;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -36,14 +36,15 @@
 }
 .profile__button-edit {
   background: url(../images/profile__button-edit.svg) no-repeat center;
-  background-size: cover;
-  width: 10px;
-  height: 10px;
+  background-size: 9px;
+  width: 3px;
+  height: 3px;
   padding: 5px;
   border: 1px solid #fff;
+  box-sizing: content-box;
 }
 .profile__job {
-  font-size: 11px;
+  font-size: 12px;
   margin: 0;
   padding-top: 5%;
   padding-bottom: 12%;
@@ -58,7 +59,7 @@
   color: #fff;
   background-color: black;
   border: 1px solid #fff;
-  width: 125%;
+  width: 90%;
   height: 40px;
   font-size: 20px;
 }

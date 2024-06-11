@@ -1,0 +1,52 @@
+.element {
+  width: 80%;
+}
+.element__image-content {
+  position: relative;
+  height: 282px;
+}
+.element__image {
+  width: 282px;
+  height: 282px;
+  border-top-left-radius: 3%;
+  border-top-right-radius: 3%;
+}
+.element__button-trash {
+  position: absolute;
+  background: url(../images/element__trash.svg) no-repeat center;
+  background-size: cover;
+  width: 15px;
+  height: 15px;
+  padding: 5px;
+  border: none;
+  top: 6%;
+  right: -15%;
+}
+.element__footer {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 11%;
+  padding-bottom: 14%;
+  width: 282px;
+  border-bottom-left-radius: 3%;
+  border-bottom-right-radius: 3%;
+}
+.element__name {
+  color: #000;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.element__button-like {
+  background: url(../images/element__like.svg) no-repeat center;
+  background-size: cover;
+  width: 8px;
+  height: 16px;
+  border: none;
+  box-sizing: content-box;
+}
