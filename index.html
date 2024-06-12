@@ -40,6 +40,37 @@
             <button class="profile__button-add">+</button>
           </div>
         </section>
+
+        <section class="popup">
+          <button class="popup__close-button"></button>
+          <div class="popup__container">
+            <h2 class="popup__heading">Nuevo lugar</h2>
+            <fieldset class="popup__form">
+              <label for="heading" class="popup__form-label"></label>
+              <input
+                type="text"
+                class="popup__form-item"
+                id="heading"
+                name="heading"
+                placeholder="Título"
+                required
+              />
+              <div class="popup__line"></div>
+              <label for="link" class="popup__form-label"></label>
+              <input
+                type="url"
+                class="popup__form-item"
+                id="link"
+                name="link"
+                placeholder="Enlace a la imagen"
+                required
+              />
+              <div class="popup__line"></div>
+              <button type="submit" class="popup__form-button">Crear</button>
+            </fieldset>
+          </div>
+        </section>
+
         <section class="elements">
           <div class="element">
             <div class="element__image-content">
