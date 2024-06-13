@@ -65,3 +65,9 @@
   border: none;
   box-sizing: content-box;
 }
+
+@media screen and (min-width: 800px) {
+  .element__button-trash {
+    right: -15%;
+  }
+}
