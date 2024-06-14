@@ -9,6 +9,7 @@
   background-color: #0000005e;
   z-index: 1;
   display: flex;
+  display: none;
 }
 .popup__container {
   background-color: #fff;
