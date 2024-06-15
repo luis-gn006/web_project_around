@@ -41,32 +41,32 @@
           </div>
         </section>
 
-        <section class="popup">
+        <section class="popup popup__profile">
           <div class="popup__container">
             <button class="popup__close-button"></button>
-            <h2 class="popup__heading">Nuevo lugar</h2>
+            <h2 class="popup__heading">Editar Perfil</h2>
             <fieldset class="popup__form">
-              <label for="heading" class="popup__form-label"></label>
+              <label for="name" class="popup__form-label"></label>
               <input
                 type="text"
-                class="popup__form-item"
-                id="heading"
-                name="heading"
-                placeholder="Título"
+                class="popup__form-item popup__form-name"
+                id="name"
+                name="name"
+                placeholder="Nombre"
                 required
               />
               <div class="popup__line"></div>
-              <label for="link" class="popup__form-label"></label>
+              <label for="job" class="popup__form-label"></label>
               <input
-                type="url"
-                class="popup__form-item"
-                id="link"
-                name="link"
-                placeholder="Enlace a la imagen"
+                type="text"
+                class="popup__form-item popup__form-job"
+                id="job"
+                name="job"
+                placeholder="Acerca de mí"
                 required
               />
               <div class="popup__line"></div>
-              <button type="submit" class="popup__form-button">Crear</button>
+              <button type="submit" class="popup__form-button">Guardar</button>
             </fieldset>
           </div>
         </section>
@@ -75,14 +75,14 @@
           <div class="element">
             <div class="element__image-content">
               <img
-                src="./images/element__bald-mountains.jpg"
-                alt="imagen bald mountains"
+                src="./images/element__disney-usa.jpg"
+                alt="imagen Disneyland"
                 class="element__image"
               />
               <button class="element__button-trash"></button>
             </div>
             <div class="element__footer">
-              <p class="element__name">Montañas Calvas</p>
+              <p class="element__name">Disney , USA</p>
               <button class="element__button-like"></button>
             </div>
           </div>
@@ -90,14 +90,14 @@
           <div class="element">
             <div class="element__image-content">
               <img
-                src="./images/element__lake-louise.jpg"
-                alt="imagen Lake Louise"
+                src="./images/element__eiffel-paris.jpg"
+                alt="imagen Torre Eiffel"
                 class="element__image"
               />
               <button class="element__button-trash"></button>
             </div>
             <div class="element__footer">
-              <p class="element__name">Lago Louise</p>
+              <p class="element__name">Eiffel , Francia</p>
               <button class="element__button-like"></button>
             </div>
           </div>
@@ -105,14 +105,14 @@
           <div class="element">
             <div class="element__image-content">
               <img
-                src="./images/element__lago.jpg"
-                alt="imagen Lago"
+                src="./images/element__fuenteTrevi-roma.jpg"
+                alt="imagen fuente Trevi "
                 class="element__image"
               />
               <button class="element__button-trash"></button>
             </div>
             <div class="element__footer">
-              <p class="element__name">Lago di Braies</p>
+              <p class="element__name">Fuente de Trevi , Italia</p>
               <button class="element__button-like"></button>
             </div>
           </div>
@@ -120,14 +120,14 @@
           <div class="element">
             <div class="element__image-content">
               <img
-                src="./images/element__latemar.jpg"
-                alt="imagen Latemar"
+                src="./images/element__puebla-mexico.jpg"
+                alt="imagen de igles en puebla "
                 class="element__image"
               />
               <button class="element__button-trash"></button>
             </div>
             <div class="element__footer">
-              <p class="element__name">Latemar</p>
+              <p class="element__name">Puebla , México</p>
               <button class="element__button-like"></button>
             </div>
           </div>
@@ -135,14 +135,14 @@
           <div class="element">
             <div class="element__image-content">
               <img
-                src="./images/element__vanoise.jpg"
-                alt="imagen Vanoise"
+                src="./images/element__roma-lazio.jpg"
+                alt="imagen Roma Lazio"
                 class="element__image"
               />
               <button class="element__button-trash"></button>
             </div>
             <div class="element__footer">
-              <p class="element__name">Parque Nacional Vanois</p>
+              <p class="element__name">Lazio , Roma</p>
               <button class="element__button-like"></button>
             </div>
           </div>
@@ -150,14 +150,14 @@
           <div class="element">
             <div class="element__image-content">
               <img
-                src="./images/element__yosemite.jpg"
-                alt="imagen Yosemite"
+                src="./images/element__saintgeorges-france.jpg"
+                alt="imagen de Saint Georges"
                 class="element__image"
               />
               <button class="element__button-trash"></button>
             </div>
             <div class="element__footer">
-              <p class="element__name">Valle de Yosemite</p>
+              <p class="element__name">Saint Georges , Francia</p>
               <button class="element__button-like"></button>
             </div>
           </div>
@@ -167,5 +167,6 @@
         <p class="footer__copyright">&#169; 2024. Luis Gonzalez</p>
       </footer>
     </div>
+    <script src="./scripts/popup.js"></script>
   </body>
 </html>

@@ -25,6 +25,7 @@
   column-gap: 5%;
   align-items: center;
   padding-top: 12%;
+  justify-content: space-between;
 }
 .profile__name {
   font-size: 24px;
@@ -33,6 +34,8 @@
   white-space: nowrap;
   overflow: hidden;
   margin: 0;
+  width: 180px;
+  text-align: center;
 }
 .profile__button-edit {
   background: url(../images/profile__button-edit.svg) no-repeat center;
@@ -98,6 +101,8 @@
   }
   .profile__name {
     font-size: 32px;
+    width: 260px;
+    text-align: start;
   }
   .profile__job {
     font-size: 14px;
@@ -106,6 +111,7 @@
   .profile__button-edit {
     width: 18px;
     height: 18px;
+    padding: 3px;
   }
   .profile__button-add {
     width: 115px;
@@ -131,6 +137,7 @@
   }
   .profile__name {
     font-size: 42px;
+    width: 320px;
   }
   .profile__job {
     font-size: 18px;

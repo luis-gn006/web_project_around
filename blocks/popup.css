@@ -8,7 +8,6 @@
   height: 100%;
   background-color: #0000005e;
   z-index: 1;
-  display: flex;
   display: none;
 }
 .popup__container {
@@ -22,7 +21,7 @@
   margin: auto;
 }
 .popup__opened {
-  display: block;
+  display: flex;
 }
 .popup__close-button {
   background: url(../images/popup__close-icon.svg) no-repeat center;
@@ -54,6 +53,11 @@
   margin: 0 3%;
   font-size: 14px;
   padding-bottom: 3.5%;
+  outline: none;
+}
+.popup__form-item:focus {
+  border: 1px solid #529cfc;
+  width: 90%;
 }
 .popup__line {
   margin: 1% 0 12% 3%;
