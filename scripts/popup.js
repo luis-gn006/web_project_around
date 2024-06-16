@@ -23,7 +23,7 @@ function callProfileInfo() {
 editButton.addEventListener("click", callProfileInfo);
 
 // Busquemos el formulario en el DOM
-let ElementForm = document.querySelector(".popup__form");
+let elementForm = document.querySelector(".popup__form");
 let savePopupButton = document.querySelector(".popup__form-button");
 // Lo siguiente es el manipulador (handler) de entrega de formularios, aunque
 // no se enviará en ningún sitio todavía
@@ -45,9 +45,9 @@ function handleProfileFormSubmit(evt) {
 
   profileName.textContent = nameForm.value;
   profileJob.textContent = jobForm.value;
+  popup.classList.toggle("popup__opened");
   // propiedad del método querySelector()
 }
 
 savePopupButton.addEventListener("click", handleProfileFormSubmit);
 // se observará el evento de entrega
-ElementForm.addEventListener("submit", handleProfileFormSubmit);
