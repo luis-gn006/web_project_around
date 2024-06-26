@@ -41,7 +41,7 @@
           </div>
         </section>
 
-        <section class="popup">
+        <section class="popup popup__profile">
           <div class="popup__container">
             <button class="popup__close-button"></button>
             <h2 class="popup__heading">Editar Perfil</h2>
@@ -72,101 +72,54 @@
         </section>
 
         <section class="elements">
-          <div class="element">
-            <div class="element__image-content">
-              <img
-                src="./images/element__disney-usa.jpg"
-                alt="imagen Disneyland"
-                class="element__image"
-              />
-              <button class="element__button-trash"></button>
+          <section class="popup popup__elements">
+            <div class="popup__container">
+              <button class="popup__close-button"></button>
+              <h2 class="popup__heading">Nuevo lugar</h2>
+              <fieldset class="popup__form popup__form-image">
+                <label for="title" class="popup__form-label"></label>
+                <input
+                  type="text"
+                  class="popup__form-item popup__form-title"
+                  id="title"
+                  name="title"
+                  placeholder="Título"
+                  required
+                />
+                <div class="popup__line"></div>
+                <label for="link__image" class="popup__form-label"></label>
+                <input
+                  type="url"
+                  class="popup__form-item popup__form-link"
+                  id="link__image"
+                  name="link__image"
+                  placeholder="Enlace a la imagen"
+                  required
+                />
+                <div class="popup__line"></div>
+                <button type="submit" class="popup__form-button">Crear</button>
+              </fieldset>
             </div>
-            <div class="element__footer">
-              <p class="element__name">Disney , USA</p>
-              <button class="element__button-like"></button>
-            </div>
-          </div>
-
-          <div class="element">
-            <div class="element__image-content">
-              <img
-                src="./images/element__eiffel-paris.jpg"
-                alt="imagen Torre Eiffel"
-                class="element__image"
-              />
-              <button class="element__button-trash"></button>
-            </div>
-            <div class="element__footer">
-              <p class="element__name">Eiffel , Francia</p>
-              <button class="element__button-like"></button>
-            </div>
-          </div>
-
-          <div class="element">
-            <div class="element__image-content">
-              <img
-                src="./images/element__fuenteTrevi-roma.jpg"
-                alt="imagen fuente Trevi "
-                class="element__image"
-              />
-              <button class="element__button-trash"></button>
-            </div>
-            <div class="element__footer">
-              <p class="element__name">Fuente de Trevi , Italia</p>
-              <button class="element__button-like"></button>
-            </div>
-          </div>
-
-          <div class="element">
-            <div class="element__image-content">
-              <img
-                src="./images/element__puebla-mexico.jpg"
-                alt="imagen de igles en puebla "
-                class="element__image"
-              />
-              <button class="element__button-trash"></button>
-            </div>
-            <div class="element__footer">
-              <p class="element__name">Puebla , México</p>
-              <button class="element__button-like"></button>
-            </div>
-          </div>
-
-          <div class="element">
-            <div class="element__image-content">
-              <img
-                src="./images/element__roma-lazio.jpg"
-                alt="imagen Roma Lazio"
-                class="element__image"
-              />
-              <button class="element__button-trash"></button>
-            </div>
-            <div class="element__footer">
-              <p class="element__name">Lazio , Roma</p>
-              <button class="element__button-like"></button>
-            </div>
-          </div>
-
-          <div class="element">
-            <div class="element__image-content">
-              <img
-                src="./images/element__saintgeorges-france.jpg"
-                alt="imagen de Saint Georges"
-                class="element__image"
-              />
-              <button class="element__button-trash"></button>
-            </div>
-            <div class="element__footer">
-              <p class="element__name">Saint Georges , Francia</p>
-              <button class="element__button-like"></button>
-            </div>
-          </div>
+          </section>
         </section>
       </main>
       <footer class="footer">
         <p class="footer__copyright">&#169; 2024. Luis Gonzalez</p>
       </footer>
     </div>
+
+    <template class="element__template">
+      <div class="element">
+        <div class="element__image-content">
+          <img src="" alt="imagen de Saint Georges" class="element__image" />
+          <button class="element__button-trash"></button>
+        </div>
+        <div class="element__footer">
+          <p class="element__name"></p>
+          <button class="element__button-like"></button>
+        </div>
+      </div>
+    </template>
     <script src="./scripts/popup.js"></script>
   </body>
 </html>
