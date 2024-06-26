@@ -78,21 +78,24 @@ savePopupButton.addEventListener("click", handleProfileFormSubmit);
 
 /* Funcion cargar imagenes de inicio*/
 initialCards.forEach(function (item) {
-  const newNode = templateNode.content
-    .querySelector(".element")
-    .cloneNode(true);
+  let newNode = templateNode.content.querySelector(".element").cloneNode(true);
   newNode.querySelector(".element__image").src = item.link;
   newNode.querySelector(".element__image").alt = `imagen de ${item.name} `;
   newNode.querySelector(".element__name").textContent = item.name;
+  newNode
+    .querySelector(".element__button-like")
+    .addEventListener("click", function (evt) {
+      evt.target.classList.toggle("element__button-like-active");
+    });
   elementsArea.append(newNode);
 });
 
 /*funcion agregar imagen*/
-let element = document.querySelector(".popup__elements");
-let elementForm = element.querySelector(".popup__form-image");
-let createPopupButton = element.querySelector(".popup__form-button");
-let inputTitle = element.querySelector(".popup__form-title");
-let inputLink = element.querySelector(".popup__form-link");
+let elements = document.querySelector(".popup__elements");
+let elementForm = elements.querySelector(".popup__form-image");
+let createPopupButton = elements.querySelector(".popup__form-button");
+let inputTitle = elements.querySelector(".popup__form-title");
+let inputLink = elements.querySelector(".popup__form-link");
 
 elementForm.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -102,7 +105,12 @@ elementForm.addEventListener("submit", function (event) {
   newNode.querySelector(".element__image").src = linkValue;
   newNode.querySelector(".element__image").alt = `imagen de ${titleValue} `;
   newNode.querySelector(".element__name").textContent = titleValue;
-  elementsArea.prepend(newNode);
-  elementForm.reset();
   popupElements.classList.toggle("popup__opened");
+  newNode
+    .querySelector(".element__button-like")
+    .addEventListener("click", function (evt) {
+      evt.target.classList.toggle("element__button-like-active");
+    });
+  elementForm.reset();
+  elementsArea.prepend(newNode);
 });
