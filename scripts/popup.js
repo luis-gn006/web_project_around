@@ -78,10 +78,7 @@ savePopupButton.addEventListener("click", handleProfileFormSubmit);
 
 /* Funcion cargar imagenes de inicio*/
 initialCards.forEach(function (item) {
-  let newNode = templateNode.content.querySelector(".element").cloneNode(true);
-  newNode.querySelector(".element__image").src = item.link;
-  newNode.querySelector(".element__image").alt = `imagen de ${item.name} `;
-  newNode.querySelector(".element__name").textContent = item.name;
+  let newNode = createCard(item.name, item.link);
   newNode
     .querySelector(".element__button-like")
     .addEventListener("click", function (evt) {
@@ -101,10 +98,7 @@ elementForm.addEventListener("submit", function (event) {
   event.preventDefault();
   let titleValue = inputTitle.value;
   let linkValue = inputLink.value;
-  let newNode = templateNode.content.querySelector(".element").cloneNode(true);
-  newNode.querySelector(".element__image").src = linkValue;
-  newNode.querySelector(".element__image").alt = `imagen de ${titleValue} `;
-  newNode.querySelector(".element__name").textContent = titleValue;
+  let newNode = createCard(titleValue, linkValue);
   popupElements.classList.toggle("popup__opened");
   newNode
     .querySelector(".element__button-like")
@@ -114,3 +108,12 @@ elementForm.addEventListener("submit", function (event) {
   elementForm.reset();
   elementsArea.prepend(newNode);
 });
+
+/*funcion crear tarjeta*/
+function createCard(name, link) {
+  let newNode = templateNode.content.querySelector(".element").cloneNode(true);
+  newNode.querySelector(".element__image").src = link;
+  newNode.querySelector(".element__image").alt = `imagen de ${name} `;
+  newNode.querySelector(".element__name").textContent = name;
+  return newNode;
+}
