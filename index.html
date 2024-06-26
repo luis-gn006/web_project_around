@@ -45,38 +45,43 @@
           <div class="popup__container">
             <button class="popup__close-button"></button>
             <h2 class="popup__heading">Editar Perfil</h2>
-            <fieldset class="popup__form">
-              <label for="name" class="popup__form-label"></label>
-              <input
-                type="text"
-                class="popup__form-item popup__form-name"
-                id="name"
-                name="name"
-                placeholder="Nombre"
-                required
-              />
-              <div class="popup__line"></div>
-              <label for="job" class="popup__form-label"></label>
-              <input
-                type="text"
-                class="popup__form-item popup__form-job"
-                id="job"
-                name="job"
-                placeholder="Acerca de mí"
-                required
-              />
-              <div class="popup__line"></div>
-              <button type="submit" class="popup__form-button">Guardar</button>
-            </fieldset>
+            <form action="" class="popup__form popup__form-profile">
+              <fieldset class="popup__form-set">
+                <label for="name" class="popup__form-label"></label>
+                <input
+                  type="text"
+                  class="popup__form-item popup__form-name"
+                  id="name"
+                  name="name"
+                  placeholder="Nombre"
+                  required
+                />
+                <div class="popup__line"></div>
+                <label for="job" class="popup__form-label"></label>
+                <input
+                  type="text"
+                  class="popup__form-item popup__form-job"
+                  id="job"
+                  name="job"
+                  placeholder="Acerca de mí"
+                  required
+                />
+                <div class="popup__line"></div>
+                <button type="submit" class="popup__form-button">
+                  Guardar
+                </button>
+              </fieldset>
+            </form>
           </div>
         </section>
 
-        <section class="elements">
-          <section class="popup popup__elements">
-            <div class="popup__container">
-              <button class="popup__close-button"></button>
-              <h2 class="popup__heading">Nuevo lugar</h2>
-              <fieldset class="popup__form popup__form-image">
+        <section class="elements"></section>
+        <section class="popup popup__elements">
+          <div class="popup__container">
+            <button class="popup__close-button"></button>
+            <h2 class="popup__heading">Nuevo lugar</h2>
+            <form action="" class="popup__form popup__form-image">
+              <fieldset class="popup__form-set">
                 <label for="title" class="popup__form-label"></label>
                 <input
                   type="text"
@@ -97,10 +102,12 @@
                   required
                 />
                 <div class="popup__line"></div>
-                <button type="submit" class="popup__form-button">Crear</button>
+                <button type="submit" class="popup__form-button" value="create">
+                  Crear
+                </button>
               </fieldset>
-            </div>
-          </section>
+            </form>
+          </div>
         </section>
       </main>
       <footer class="footer">

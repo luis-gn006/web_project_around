@@ -62,7 +62,9 @@ function callProfileInfo() {
 
 editButton.addEventListener("click", callProfileInfo);
 
-let elementForm = document.querySelector(".popup__form");
+/* funcion editar profile*/
+let profile = document.querySelector(".popup__profile");
+let profileForm = profile.querySelector(".popup__form");
 let savePopupButton = document.querySelector(".popup__form-button");
 
 function handleProfileFormSubmit(evt) {
@@ -83,4 +85,24 @@ initialCards.forEach(function (item) {
   newNode.querySelector(".element__image").alt = `imagen de ${item.name} `;
   newNode.querySelector(".element__name").textContent = item.name;
   elementsArea.append(newNode);
+});
+
+/*funcion agregar imagen*/
+let element = document.querySelector(".popup__elements");
+let elementForm = element.querySelector(".popup__form-image");
+let createPopupButton = element.querySelector(".popup__form-button");
+let inputTitle = element.querySelector(".popup__form-title");
+let inputLink = element.querySelector(".popup__form-link");
+
+elementForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  let titleValue = inputTitle.value;
+  let linkValue = inputLink.value;
+  let newNode = templateNode.content.querySelector(".element").cloneNode(true);
+  newNode.querySelector(".element__image").src = linkValue;
+  newNode.querySelector(".element__image").alt = `imagen de ${titleValue} `;
+  newNode.querySelector(".element__name").textContent = titleValue;
+  elementsArea.prepend(newNode);
+  elementForm.reset();
+  popupElements.classList.toggle("popup__opened");
 });
