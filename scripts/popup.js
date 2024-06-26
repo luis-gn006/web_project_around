@@ -79,11 +79,6 @@ savePopupButton.addEventListener("click", handleProfileFormSubmit);
 /* Funcion cargar imagenes de inicio*/
 initialCards.forEach(function (item) {
   let newNode = createCard(item.name, item.link);
-  newNode
-    .querySelector(".element__button-like")
-    .addEventListener("click", function (evt) {
-      evt.target.classList.toggle("element__button-like-active");
-    });
   elementsArea.append(newNode);
 });
 
@@ -100,11 +95,6 @@ elementForm.addEventListener("submit", function (event) {
   let linkValue = inputLink.value;
   let newNode = createCard(titleValue, linkValue);
   popupElements.classList.toggle("popup__opened");
-  newNode
-    .querySelector(".element__button-like")
-    .addEventListener("click", function (evt) {
-      evt.target.classList.toggle("element__button-like-active");
-    });
   elementForm.reset();
   elementsArea.prepend(newNode);
 });
@@ -115,5 +105,16 @@ function createCard(name, link) {
   newNode.querySelector(".element__image").src = link;
   newNode.querySelector(".element__image").alt = `imagen de ${name} `;
   newNode.querySelector(".element__name").textContent = name;
+  newNode
+    .querySelector(".element__button-like")
+    .addEventListener("click", function (evt) {
+      evt.target.classList.toggle("element__button-like-active");
+    });
+
+  newNode
+    .querySelector(".element__button-trash")
+    .addEventListener("click", function (evt) {
+      newNode.remove();
+    });
   return newNode;
 }
