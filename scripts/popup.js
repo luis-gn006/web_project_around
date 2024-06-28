@@ -26,7 +26,7 @@ const initialCards = [
 ];
 
 /* Funcion visulacion popup profile*/
-let popupProfile = document.querySelector(".popup__profile");
+let popupProfile = document.querySelector(".popup-profile");
 let editButton = document.querySelector(".profile__button-edit");
 let closeButtonProfile = popupProfile.querySelector(".popup__close-button");
 function editButtonClick() {
@@ -36,7 +36,7 @@ editButton.addEventListener("click", editButtonClick);
 closeButtonProfile.addEventListener("click", editButtonClick);
 
 /* Funcion visulacion popup elements*/
-let popupElements = document.querySelector(".popup__elements");
+let popupElements = document.querySelector(".popup-elements");
 let addButton = document.querySelector(".profile__button-add");
 let closeButtonElements = popupElements.querySelector(".popup__close-button");
 function addButtonClick() {
@@ -58,7 +58,7 @@ function callProfileInfo() {
 editButton.addEventListener("click", callProfileInfo);
 
 /* funcion editar profile*/
-let profile = document.querySelector(".popup__profile");
+let profile = document.querySelector(".popup-profile");
 let profileForm = profile.querySelector(".popup__form");
 let savePopupButton = document.querySelector(".popup__form-button");
 
@@ -81,7 +81,7 @@ initialCards.forEach(function (item) {
 });
 
 /*funcion agregar imagen*/
-let elements = document.querySelector(".popup__elements");
+let elements = document.querySelector(".popup-elements");
 let elementForm = elements.querySelector(".popup__form-image");
 let createPopupButton = elements.querySelector(".popup__form-button");
 let inputTitle = elements.querySelector(".popup__form-title");
@@ -116,7 +116,7 @@ function createCard(name, link) {
     });
   /*funcion abrir popup image*/
   newNode.querySelector(".element__image").addEventListener("click", () => {
-    let popupImage = document.querySelector(".popup__image-fullscreen");
+    let popupImage = document.querySelector(".popup-image-fullscreen");
     popupImage.classList.toggle("popup__opened");
     /*funcion llamar info al popup*/
     popupImage.querySelector(".popup__image").src = link;
@@ -130,7 +130,7 @@ function createCard(name, link) {
 /* funcion cerrar popup image*/
 let closeButtonImage = document.querySelector(".popup__button-image");
 function closeButtonClick() {
-  let popupImage = document.querySelector(".popup__image-fullscreen");
+  let popupImage = document.querySelector(".popup-image-fullscreen");
   popupImage.classList.toggle("popup__opened");
 }
 closeButtonImage.addEventListener("click", closeButtonClick);
