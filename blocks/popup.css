@@ -83,7 +83,7 @@
 .popup__form-set {
   border: none;
 }
-.popup__form-item {
+.popup__form-input {
   border: none;
   margin: 0 3%;
   font-size: 14px;
@@ -93,7 +93,7 @@
 .popup__form-job {
   margin-top: 12%;
 }
-.popup__form-item:focus {
+.popup__form-input:focus {
   border: 1px solid #529cfc;
   width: 90%;
 }
@@ -153,7 +153,7 @@
     margin: 0 36px;
     font-size: 24px;
   }
-  .popup__form-item {
+  .popup__form-input {
     margin: 0 24px;
     padding: 0;
   }

@@ -1,6 +1,6 @@
 /*function validar formulario profile*/
 const formProfile = document.querySelector(".popup__form-profile");
-const formInput = formProfile.querySelector(".popup__form-name");
+const formInput = formProfile.querySelector(".popup__form-input");
 const formError = formProfile.querySelector(`.${formInput.id}-error`);
 
 const showError = (input, errorMessage) => {
