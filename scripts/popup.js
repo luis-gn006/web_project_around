@@ -69,7 +69,7 @@ function handleProfileFormSubmit(evt) {
   popupProfile.classList.toggle("popup__opened");
 }
 
-savePopupButton.addEventListener("click", handleProfileFormSubmit);
+profileForm.addEventListener("submit", handleProfileFormSubmit);
 
 /* Funcion cargar imagenes de inicio*/
 let elementsArea = document.querySelector(".elements");
