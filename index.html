@@ -105,8 +105,11 @@
                   name="title"
                   placeholder="Título"
                   required
+                  minlength="2"
+                  maxlength="30"
                 />
                 <div class="popup__line"></div>
+                <span class="popup__input-error title-error"></span>
                 <label for="link__image" class="popup__form-label"></label>
                 <input
                   type="url"
@@ -117,6 +120,7 @@
                   required
                 />
                 <div class="popup__line"></div>
+                <span class="popup__input-error link__image-error"></span>
                 <button type="submit" class="popup__form-button" value="create">
                   Crear
                 </button>

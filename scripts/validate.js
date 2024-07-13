@@ -1,5 +1,5 @@
-/*function validar formulario profile*/
-const formProfile = document.querySelector(".popup__form-profile");
+/*function validar formularios*/
+const formProfile = document.querySelector(".popup__form");
 const formInput = formProfile.querySelector(".popup__form-input");
 const formError = formProfile.querySelector(`.${formInput.id}-error`);
 const showInputError = (formElement, inputElement, errorMessage) => {
@@ -37,9 +37,7 @@ const setEventListeners = (formElement) => {
 };
 
 const enableValidation = () => {
-  const formList = Array.from(
-    document.querySelectorAll(".popup__form-profile")
-  );
+  const formList = Array.from(document.querySelectorAll(".popup__form"));
 
   formList.forEach((formElement) => {
     formElement.addEventListener("submit", (evt) => {
