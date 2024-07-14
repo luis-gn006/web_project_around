@@ -163,6 +163,9 @@
     margin: 0 36px;
     font-size: 24px;
   }
+  .popup__line {
+    margin: 1% 0 2% 5%;
+  }
   .popup__form-input {
     margin: 0 24px;
     padding: 0;
