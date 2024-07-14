@@ -1,10 +1,9 @@
 /*function validar formularios*/
-const formProfile = document.querySelector(".popup__form");
-const formInput = formProfile.querySelector(".popup__form-input");
-const formError = formProfile.querySelector(`.${formInput.id}-error`);
+const popupForm = document.querySelector(".popup__form");
+const formInput = popupForm.querySelector(".popup__form-input");
+const formError = popupForm.querySelector(`.${formInput.id}-error`);
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  console.log(inputElement);
   inputElement.nextElementSibling.classList.add("popup__form-input_error");
   errorElement.textContent = errorMessage;
   errorElement.classList.add("popup__input-error_active");
@@ -49,3 +48,34 @@ const enableValidation = () => {
 };
 
 enableValidation();
+
+/*funcion enable/disable form profile button*/
+
+const nameProfile = popupForm.elements.name;
+const jobProfile = popupForm.elements.job;
+const saveButton = document.querySelector(".popup__save-button");
+const popupFormImage = document.querySelector(".popup__form-image");
+const titleImage = popupFormImage.elements.title;
+const linkImage = popupFormImage.elements.link;
+const createButton = document.querySelector(".popup__create-button");
+
+function setSubmitButtonState(isFormValid, buttonSelected) {
+  if (isFormValid) {
+    buttonSelected.removeAttribute("disabled");
+    buttonSelected.classList.remove("popup__form-button_disabled");
+  } else {
+    buttonSelected.setAttribute("disabled", true);
+    buttonSelected.classList.add("popup__form-button_disabled");
+  }
+}
+
+popupForm.addEventListener("input", function (evt) {
+  const isValidProfile =
+    nameProfile.value.length > 1 && jobProfile.value.length > 1;
+  setSubmitButtonState(isValidProfile, saveButton);
+});
+popupFormImage.addEventListener("input", function (evt) {
+  const isValidImage =
+    titleImage.value.length > 1 && linkImage.value.includes("https://");
+  setSubmitButtonState(isValidImage, createButton);
+});

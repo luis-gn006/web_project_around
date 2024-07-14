@@ -93,6 +93,9 @@
 .popup__form-job {
   margin-top: 12%;
 }
+.popup__form-link {
+  margin-top: 12%;
+}
 .popup__form-input:focus {
   border: 1px solid #529cfc;
   width: 90%;
@@ -132,6 +135,13 @@
   border-radius: 3%;
   width: 95%;
   height: 46px;
+}
+.popup__form-button_disabled {
+  background-color: #f5f5f5;
+  color: #000;
+  opacity: 20%;
+  border: solid #000;
+  cursor: default;
 }
 .popup__form-button:hover {
   opacity: 0.8;

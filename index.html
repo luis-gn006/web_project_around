@@ -74,7 +74,11 @@
                 />
                 <div class="popup__line popup__line-job"></div>
                 <span class="popup__input-error job-error"></span>
-                <button type="submit" class="popup__form-button">
+                <button
+                  disabled
+                  type="submit"
+                  class="popup__form-button popup__save-button"
+                >
                   Guardar
                 </button>
               </fieldset>
@@ -115,13 +119,18 @@
                   type="url"
                   class="popup__form-input popup__form-link"
                   id="link__image"
-                  name="link__image"
+                  name="link"
                   placeholder="Enlace a la imagen"
                   required
                 />
                 <div class="popup__line"></div>
                 <span class="popup__input-error link__image-error"></span>
-                <button type="submit" class="popup__form-button" value="create">
+                <button
+                  disabled
+                  type="submit"
+                  class="popup__form-button popup__create-button popup__form-button_disabled"
+                  value="create"
+                >
                   Crear
                 </button>
               </fieldset>
