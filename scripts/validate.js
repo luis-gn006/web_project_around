@@ -45,6 +45,19 @@ const enableValidation = () => {
 
     setEventListeners(formElement);
   });
+
+  formList.forEach((formElement) => {
+    formElement.addEventListener("input", (evt) => {
+      const isValidProfile =
+        nameProfile.value.length > 1 && jobProfile.value.length > 1;
+      setSubmitButtonState(isValidProfile, saveButton);
+      const isValidImage =
+        titleImage.value.length > 1 && linkImage.value.includes("https://");
+      setSubmitButtonState(isValidImage, createButton);
+    });
+
+    setEventListeners(formElement);
+  });
 };
 
 enableValidation();
@@ -68,14 +81,3 @@ function setSubmitButtonState(isFormValid, buttonSelected) {
     buttonSelected.classList.add("popup__form-button_disabled");
   }
 }
-
-popupForm.addEventListener("input", function (evt) {
-  const isValidProfile =
-    nameProfile.value.length > 1 && jobProfile.value.length > 1;
-  setSubmitButtonState(isValidProfile, saveButton);
-});
-popupFormImage.addEventListener("input", function (evt) {
-  const isValidImage =
-    titleImage.value.length > 1 && linkImage.value.includes("https://");
-  setSubmitButtonState(isValidImage, createButton);
-});
