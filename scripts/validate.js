@@ -52,7 +52,7 @@ const enableValidation = () => {
         nameProfile.value.length > 1 && jobProfile.value.length > 1;
       setSubmitButtonState(isValidProfile, saveButton);
       const isValidImage =
-        titleImage.value.length > 1 && linkImage.value.includes("https://");
+        titleImage.value.length > 1 && linkImage.value.includes("http");
       setSubmitButtonState(isValidImage, createButton);
     });
 

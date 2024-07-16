@@ -129,8 +129,44 @@ function createCard(name, link) {
 
 /* funcion cerrar popup image*/
 let closeButtonImage = document.querySelector(".popup__button-image");
+let popupImage = document.querySelector(".popup-image-fullscreen");
 function closeButtonClick() {
   let popupImage = document.querySelector(".popup-image-fullscreen");
   popupImage.classList.toggle("popup__opened");
 }
 closeButtonImage.addEventListener("click", closeButtonClick);
+
+/* funcion cerrar popup click outside*/
+
+popupProfile.addEventListener("click", function (evt) {
+  let popupContainer = popupProfile.querySelector(".popup__container");
+  if (!popupContainer.contains(evt.target)) {
+    removePopup();
+  }
+});
+popupElements.addEventListener("click", function (evt) {
+  let popupContainer = popupElements.querySelector(".popup__container");
+  if (!popupContainer.contains(evt.target)) {
+    removePopup();
+  }
+});
+popupImage.addEventListener("click", function (evt) {
+  let popupContainer = popupImage.querySelector(".popup__container-image");
+  if (!popupContainer.contains(evt.target)) {
+    removePopup();
+  }
+});
+
+/* function close popup escape*/
+
+function removePopup() {
+  popupProfile.classList.remove("popup__opened");
+  popupElements.classList.remove("popup__opened");
+  popupImage.classList.remove("popup__opened");
+}
+
+document.addEventListener("keydown", function (evt) {
+  if (evt.key === "Escape") {
+    removePopup();
+  }
+});
