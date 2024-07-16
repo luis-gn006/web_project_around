@@ -1,7 +1,4 @@
-/*function validar formularios*/
-const popupForm = document.querySelector(".popup__form");
-const formInput = popupForm.querySelector(".popup__form-input");
-const formError = popupForm.querySelector(`.${formInput.id}-error`);
+/*función validar formularios*/
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.nextElementSibling.classList.add("popup__form-input_error");
@@ -24,67 +21,57 @@ const checkInputValidity = (formElement, inputElement) => {
   }
 };
 
+const hasInvalidInput = (inputList) => {
+  return inputList.some((inputElement) => {
+    return !inputElement.validity.valid;
+  });
+};
+
+const toggleButtonState = (inputList, buttonElement) => {
+  if (hasInvalidInput(inputList)) {
+    buttonElement.classList.add("popup__form-button_disabled");
+  } else {
+    buttonElement.classList.remove("popup__form-button_disabled");
+  }
+};
+
 const setEventListeners = (formElement) => {
   const inputList = Array.from(
     formElement.querySelectorAll(".popup__form-input")
   );
+  const buttonElement = formElement.querySelector(".popup__form-button");
+  toggleButtonState(inputList, buttonElement);
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
       checkInputValidity(formElement, inputElement);
+      toggleButtonState(inputList, buttonElement);
     });
   });
 };
 
 const enableValidation = () => {
   const formList = Array.from(document.querySelectorAll(".popup__form"));
-
   formList.forEach((formElement) => {
-    formElement.addEventListener("submit", (evt) => {
+    formElement.addEventListener("submit", function (evt) {
       evt.preventDefault();
     });
 
-    setEventListeners(formElement);
-  });
+    const fieldsetList = Array.from(
+      formElement.querySelectorAll(".popup__form-set")
+    );
 
-  formList.forEach((formElement) => {
-    formElement.addEventListener("input", (evt) => {
-      const isValidProfile =
-        nameProfile.value.length > 1 && jobProfile.value.length > 1;
-      setSubmitButtonState(isValidProfile, saveButton);
-      const isValidImage =
-        titleImage.value.length > 1 && linkImage.value.includes("http");
-      setSubmitButtonState(isValidImage, createButton);
+    fieldsetList.forEach((fieldset) => {
+      setEventListeners(fieldset);
     });
-
-    setEventListeners(formElement);
   });
 };
 
 enableValidation({
-  formSelector: ".popup__form",
-  inputSelector: ".popup__form-input",
-  submitButtonSelector: ".popup__form-button",
+  formSelector: "popup__form",
+  inputSelector: "popup__form-input",
+  submitButtonSelector: "popup__form-button",
   inactiveButtonClass: "popup__form-button_disabled",
-  inputErrorClass: "popup__input-error",
+  inputErrorClass: "popup__form-input_error",
   errorClass: "popup__input-error_active",
+  fieldsetSelector: "popup__form-set",
 });
-
-/*funcion enable/disable form profile button*/
-
-const nameProfile = popupForm.elements.name;
-const jobProfile = popupForm.elements.job;
-const saveButton = document.querySelector(".popup__save-button");
-const popupFormImage = document.querySelector(".popup__form-image");
-const titleImage = popupFormImage.elements.title;
-const linkImage = popupFormImage.elements.link;
-const createButton = document.querySelector(".popup__create-button");
-
-function setSubmitButtonState(isFormValid, buttonSelected) {
-  if (isFormValid) {
-    buttonSelected.removeAttribute("disabled");
-    buttonSelected.classList.remove("popup__form-button_disabled");
-  } else {
-    buttonSelected.setAttribute("disabled", true);
-    buttonSelected.classList.add("popup__form-button_disabled");
-  }
-}
