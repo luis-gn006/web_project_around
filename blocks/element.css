@@ -14,7 +14,7 @@
 .element__button-trash {
   position: absolute;
   background: url(../images/element__trash.svg) no-repeat center;
-  background-size: cover;
+  background-size: contain;
   width: 15px;
   height: 15px;
   padding: 5px;
@@ -50,7 +50,7 @@
 }
 .element__button-like {
   background: url(../images/element__like.svg) no-repeat center;
-  background-size: cover;
+  background-size: contain;
   width: 8px;
   height: 16px;
   border: none;
@@ -64,7 +64,7 @@
 }
 .element__button-like-active {
   background: url(../images/element__like-active.svg) no-repeat center;
-  background-size: cover;
+  background-size: contain;
   width: 8px;
   height: 16px;
   border: none;
