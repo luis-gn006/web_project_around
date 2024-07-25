@@ -38,9 +38,9 @@ function togglePopup(form) {
 }
 
 /* Visulacion popup profile*/
-let popupProfile = document.querySelector(".popup-profile");
-let editButton = document.querySelector(".profile__button-edit");
-let closeButtonProfile = popupProfile.querySelector(".popup__close-button");
+const popupProfile = document.querySelector(".popup-profile");
+const editButton = document.querySelector(".profile__button-edit");
+const closeButtonProfile = popupProfile.querySelector(".popup__close-button");
 editButton.addEventListener("click", function () {
   showPopup(popupProfile);
 });
@@ -49,9 +49,9 @@ closeButtonProfile.addEventListener("click", function () {
 });
 
 /* Visulacion popup elements*/
-let popupElements = document.querySelector(".popup-elements");
-let addButton = document.querySelector(".profile__button-add");
-let closeButtonElements = popupElements.querySelector(".popup__close-button");
+const popupElements = document.querySelector(".popup-elements");
+const addButton = document.querySelector(".profile__button-add");
+const closeButtonElements = popupElements.querySelector(".popup__close-button");
 addButton.addEventListener("click", function () {
   showPopup(popupElements);
 });
@@ -61,10 +61,10 @@ closeButtonElements.addEventListener("click", function () {
 });
 
 /* Llamar info del perfil*/
-let profileName = document.querySelector(".profile__name");
-let profileJob = document.querySelector(".profile__job");
-let nameForm = document.querySelector(".popup__form-name");
-let jobForm = document.querySelector(".popup__form-job");
+const profileName = document.querySelector(".profile__name");
+const profileJob = document.querySelector(".profile__job");
+const nameForm = document.querySelector(".popup__form-name");
+const jobForm = document.querySelector(".popup__form-job");
 function callProfileInfo() {
   nameForm.value = profileName.textContent;
   jobForm.value = profileJob.textContent;
@@ -73,8 +73,8 @@ function callProfileInfo() {
 editButton.addEventListener("click", callProfileInfo);
 
 /* funcion editar profile*/
-let profileForm = popupProfile.querySelector(".popup__form");
-let savePopupButton = popupProfile.querySelector(".popup__form-button");
+const profileForm = popupProfile.querySelector(".popup__form");
+const savePopupButton = popupProfile.querySelector(".popup__form-button");
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
@@ -86,8 +86,8 @@ function handleProfileFormSubmit(evt) {
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 
 /* Funcion cargar imagenes de inicio*/
-let elementsArea = document.querySelector(".elements");
-let templateNode = document.querySelector(".element__template");
+const elementsArea = document.querySelector(".elements");
+const templateNode = document.querySelector(".element__template");
 
 initialCards.forEach(function (item) {
   let newNode = createCard(item.name, item.link);
@@ -95,11 +95,11 @@ initialCards.forEach(function (item) {
 });
 
 /*funcion agregar imagen*/
-let elements = document.querySelector(".popup-elements");
-let elementForm = elements.querySelector(".popup__form-image");
-let createPopupButton = elements.querySelector(".popup__form-button");
-let inputTitle = elements.querySelector(".popup__form-title");
-let inputLink = elements.querySelector(".popup__form-link");
+const elements = document.querySelector(".popup-elements");
+const elementForm = elements.querySelector(".popup__form-image");
+const createPopupButton = elements.querySelector(".popup__form-button");
+const inputTitle = elements.querySelector(".popup__form-title");
+const inputLink = elements.querySelector(".popup__form-link");
 
 elementForm.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -142,8 +142,8 @@ function createCard(name, link) {
 }
 
 /* funcion boton cerrar popup image*/
-let closeButtonImage = document.querySelector(".popup__button-image");
-let popupImage = document.querySelector(".popup-image-fullscreen");
+const closeButtonImage = document.querySelector(".popup__button-image");
+const popupImage = document.querySelector(".popup-image-fullscreen");
 closeButtonImage.addEventListener("click", function () {
   hidePopup(popupImage);
 });

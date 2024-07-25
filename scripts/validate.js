@@ -37,11 +37,15 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
-const toggleButtonState = (inputList, buttonElement) => {
+const toggleButtonState = (inputList, buttonElement, formConfig) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.disabled = true;
+    buttonElement.classList.add(formConfig.inactiveButtonClass);
+    buttonElement.classList.remove(formConfig.activeButtonClass);
   } else {
     buttonElement.disabled = false;
+    buttonElement.classList.remove(formConfig.inactiveButtonClass);
+    buttonElement.classList.add(formConfig.activeButtonClass);
   }
 };
 
@@ -52,11 +56,11 @@ const setEventListeners = (formElement, formConfig) => {
   const buttonElement = formElement.querySelector(
     formConfig.submitButtonSelector
   );
-  toggleButtonState(inputList, buttonElement);
+  toggleButtonState(inputList, buttonElement, formConfig);
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
       checkInputValidity(formElement, inputElement, formConfig);
-      toggleButtonState(inputList, buttonElement);
+      toggleButtonState(inputList, buttonElement, formConfig);
     });
   });
 };
@@ -80,12 +84,15 @@ const enableValidation = (formConfig) => {
   });
 };
 
-enableValidation({
+const formConfig = {
   formSelector: ".popup__form",
   inputSelector: ".popup__form-input",
   submitButtonSelector: ".popup__form-button",
   inactiveButtonClass: "popup__form-button_disabled",
+  activeButtonClass: "popup__form-button",
   inputErrorClass: "popup__form-input_error",
   errorClass: "popup__input-error_active",
   fieldsetSelector: ".popup__form-set",
-});
+};
+
+enableValidation(formConfig);
