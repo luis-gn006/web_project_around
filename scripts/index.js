@@ -80,6 +80,7 @@ function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = nameForm.value;
   profileJob.textContent = jobForm.value;
+  resetForm(evt.target, formConfig);
   togglePopup(popupProfile);
 }
 
@@ -107,6 +108,7 @@ elementForm.addEventListener("submit", function (event) {
   let linkValue = inputLink.value;
   let newNode = createCard(titleValue, linkValue);
   togglePopup(popupElements);
+  resetForm(event.target, formConfig);
   elementForm.reset();
   elementsArea.prepend(newNode);
 });
