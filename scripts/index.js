@@ -86,14 +86,81 @@ function handleProfileFormSubmit(evt) {
 
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 
-/* Funcion cargar imagenes de inicio*/
+//Funcion cargar imagenes de inicio
+
 const elementsArea = document.querySelector(".elements");
 const templateNode = document.querySelector(".element__template");
 
+// clase Card
+
+class Card {
+  constructor(data, cardSelector) {
+    this._link = data.link;
+    this._name = data.name;
+    this._cardSelector = cardSelector;
+  }
+
+  _getTemplate() {
+    const cardElement = document
+      .querySelector(this._cardSelector)
+      .content.querySelector(".element")
+      .cloneNode(true);
+
+    return cardElement;
+  }
+  generateCard() {
+    this._element = this._getTemplate();
+
+    this._element.querySelector(".element__image").src = this._link;
+    this._element.querySelector(".element__name").textContent = this._name;
+    this._element.querySelector(
+      ".element__image"
+    ).alt = `imagen de ${this._name} `;
+    // like button
+    this._element
+      .querySelector(".element__button-like")
+      .addEventListener("click", function (evt) {
+        evt.target.classList.toggle("element__button-like-active");
+      });
+    // trash button
+    this._element
+      .querySelector(".element__button-trash")
+      .addEventListener("click", function (evt) {
+        evt.target.parentNode.parentNode.remove();
+      });
+
+    // abrir popup image
+    this._element
+      .querySelector(".element__image")
+      .addEventListener("click", () => {
+        let popupImage = document.querySelector(".popup-image-fullscreen");
+        togglePopup(popupImage);
+        /*funcion llamar info al popup*/
+        popupImage.querySelector(".popup__image").src = this._link;
+        popupImage.querySelector(".popup__title-image").textContent =
+          this._name;
+        popupImage.querySelector(
+          ".popup__image"
+        ).alt = `imagen de ${this._name} `;
+      });
+    return this._element;
+  }
+}
+
+// cargar imagenes de inicio
+initialCards.forEach((item) => {
+  const card = new Card(item, ".element__template");
+  const cardElement = card.generateCard();
+
+  elementsArea.append(cardElement);
+});
+
+/*
 initialCards.forEach(function (item) {
   let newNode = createCard(item.name, item.link);
   elementsArea.append(newNode);
 });
+*/
 
 /*funcion agregar imagen*/
 const elements = document.querySelector(".popup-elements");
@@ -104,44 +171,51 @@ const inputLink = elements.querySelector(".popup__form-link");
 
 elementForm.addEventListener("submit", function (event) {
   event.preventDefault();
-  let titleValue = inputTitle.value;
-  let linkValue = inputLink.value;
-  let newNode = createCard(titleValue, linkValue);
+  let data = {
+    link: inputLink.value,
+    name: inputTitle.value,
+  };
+  let newCard = new Card(data, ".element__template");
+  const newCardElement = newCard.generateCard();
+  //let newNode = createCard(titleValue, linkValue);
   togglePopup(popupElements);
   resetForm(event.target, formConfig);
   elementForm.reset();
-  elementsArea.prepend(newNode);
+  elementsArea.prepend(newCardElement);
+  //elementsArea.prepend(newNode);
 });
 
-/*funcion crear tarjeta*/
+//funcion crear tarjeta
+/*
 function createCard(name, link) {
   let newNode = templateNode.content.querySelector(".element").cloneNode(true);
   newNode.querySelector(".element__image").src = link;
   newNode.querySelector(".element__image").alt = `imagen de ${name} `;
   newNode.querySelector(".element__name").textContent = name;
+  // funcion like button
   newNode
     .querySelector(".element__button-like")
     .addEventListener("click", function (evt) {
       evt.target.classList.toggle("element__button-like-active");
     });
-  /*funcion borrar tarjeta*/
+  //funcion borrar tarjeta
   newNode
     .querySelector(".element__button-trash")
     .addEventListener("click", function (evt) {
       newNode.remove();
     });
-  /*funcion abrir popup image*/
+  //funcion abrir popup image
   newNode.querySelector(".element__image").addEventListener("click", () => {
     let popupImage = document.querySelector(".popup-image-fullscreen");
     togglePopup(popupImage);
-    /*funcion llamar info al popup*/
+    //funcion llamar info al popup
     popupImage.querySelector(".popup__image").src = link;
     popupImage.querySelector(".popup__image").alt = `imagen de ${name} `;
     popupImage.querySelector(".popup__title-image").textContent = name;
   });
 
   return newNode;
-}
+} */
 
 /* funcion boton cerrar popup image*/
 const closeButtonImage = document.querySelector(".popup__button-image");

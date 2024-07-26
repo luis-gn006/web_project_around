@@ -109,3 +109,5 @@ const formConfig = {
 };
 
 enableValidation(formConfig);
+
+// clase formValidation
