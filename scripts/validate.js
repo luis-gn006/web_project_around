@@ -1,4 +1,5 @@
 /*function validar formularios*/
+/*
 const showInputError = (
   formElement,
   inputElement,
@@ -111,3 +112,4 @@ const formConfig = {
 enableValidation(formConfig);
 
 // clase formValidation
+*/

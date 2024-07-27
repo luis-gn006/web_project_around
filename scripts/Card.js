@@ -1,9 +1,4 @@
-// remover esta funcion con import
-function togglePopup(form) {
-  form.classList.toggle("popup__opened");
-}
-
-class Card {
+export class Card {
   constructor(data, cardSelector) {
     this._link = data.link;
     this._name = data.name;

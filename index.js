@@ -1,3 +1,6 @@
+import { Card } from "./scripts/Card.js";
+import { FormValidator } from "./scripts/FormValidator.js";
+
 const initialCards = [
   {
     name: "Disney , USA",
@@ -101,13 +104,6 @@ initialCards.forEach((item) => {
   elementsArea.append(cardElement);
 });
 
-/*
-initialCards.forEach(function (item) {
-  let newNode = createCard(item.name, item.link);
-  elementsArea.append(newNode);
-});
-*/
-
 /*funcion agregar imagen*/
 const elements = document.querySelector(".popup-elements");
 const elementForm = elements.querySelector(".popup__form-image");
@@ -125,43 +121,10 @@ elementForm.addEventListener("submit", function (event) {
   const newCardElement = newCard.generateCard();
   //let newNode = createCard(titleValue, linkValue);
   togglePopup(popupElements);
-  resetForm(event.target, formConfig);
   elementForm.reset();
   elementsArea.prepend(newCardElement);
   //elementsArea.prepend(newNode);
 });
-
-//funcion crear tarjeta
-/*
-function createCard(name, link) {
-  let newNode = templateNode.content.querySelector(".element").cloneNode(true);
-  newNode.querySelector(".element__image").src = link;
-  newNode.querySelector(".element__image").alt = `imagen de ${name} `;
-  newNode.querySelector(".element__name").textContent = name;
-  // funcion like button
-  newNode
-    .querySelector(".element__button-like")
-    .addEventListener("click", function (evt) {
-      evt.target.classList.toggle("element__button-like-active");
-    });
-  //funcion borrar tarjeta
-  newNode
-    .querySelector(".element__button-trash")
-    .addEventListener("click", function (evt) {
-      newNode.remove();
-    });
-  //funcion abrir popup image
-  newNode.querySelector(".element__image").addEventListener("click", () => {
-    let popupImage = document.querySelector(".popup-image-fullscreen");
-    togglePopup(popupImage);
-    //funcion llamar info al popup
-    popupImage.querySelector(".popup__image").src = link;
-    popupImage.querySelector(".popup__image").alt = `imagen de ${name} `;
-    popupImage.querySelector(".popup__title-image").textContent = name;
-  });
-
-  return newNode;
-} */
 
 /* funcion boton cerrar popup image*/
 const closeButtonImage = document.querySelector(".popup__button-image");
@@ -194,3 +157,26 @@ document.addEventListener("keydown", function (evt) {
     removeAllPopups();
   }
 });
+
+const formConfig = {
+  inputSelector: ".popup__form-input",
+  submitButtonSelector: ".popup__form-button",
+  inactiveButtonClass: "popup__form-button_disabled",
+  activeButtonClass: "popup__form-button",
+  inputErrorClass: "popup__form-input_error",
+  errorClass: "popup__input-error_active",
+  fieldsetSelector: ".popup__form-set",
+};
+
+const formSelectorProfile = document.querySelector(".popup__form-profile");
+
+const profileFormValidation = new FormValidator(
+  formConfig,
+  formSelectorProfile
+);
+profileFormValidation.enableValidation();
+
+const formSelectorImage = document.querySelector(".popup__form-image");
+
+const imageFormValidation = new FormValidator(formConfig, formSelectorImage);
+imageFormValidation.enableValidation();
