@@ -1,3 +1,4 @@
+import { togglePopup } from "./utils.js";
 export class Card {
   constructor(data, cardSelector) {
     this._link = data.link;
