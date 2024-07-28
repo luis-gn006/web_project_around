@@ -1,5 +1,4 @@
 import { Card } from "./Card.js";
-import { profileFormValidation, imageFormValidation } from "../index.js";
 //Funciones de mostrar , ocultar y toggle popup
 function showPopup(form) {
   form.classList.add("popup__opened");

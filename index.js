@@ -48,14 +48,11 @@ const formConfig = {
 };
 
 const formSelectorProfile = document.querySelector(".popup__form-profile");
-export const profileFormValidation = new FormValidator(
+const profileFormValidation = new FormValidator(
   formConfig,
   formSelectorProfile
 );
 profileFormValidation.enableValidation();
 const formSelectorImage = document.querySelector(".popup__form-image");
-export const imageFormValidation = new FormValidator(
-  formConfig,
-  formSelectorImage
-);
+const imageFormValidation = new FormValidator(formConfig, formSelectorImage);
 imageFormValidation.enableValidation();

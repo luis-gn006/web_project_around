@@ -73,19 +73,3 @@ export class FormValidator {
     });
   }
 }
-
-/*
-//funcion resetear formularios
-
-const resetForm = (formElement, formConfig) => {
-  formElement.reset();
-  const submitButton = formElement.querySelector(
-    formConfig.submitButtonSelector
-  );
-  const inputList = Array.from(
-    formElement.querySelectorAll(formConfig.inputSelector)
-  );
-  toggleButtonState(inputList, submitButton, formConfig);
-};
-
-*/
