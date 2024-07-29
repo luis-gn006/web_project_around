@@ -1,6 +1,6 @@
-import { Card } from "./scripts/Card.js";
-import { FormValidator } from "./scripts/FormValidator.js";
-import { elementsArea } from "./scripts/utils.js";
+import { Card } from "./Card.js";
+import { FormValidator } from "./FormValidator.js";
+import { elementsArea } from "./utils.js";
 
 const initialCards = [
   {
