@@ -127,7 +127,7 @@
   opacity: 1;
 }
 
-.popup__form-button {
+.popup__form-button_active {
   margin: 6% 0 7% 0;
   background-color: #000;
   color: #fff;
@@ -136,7 +136,7 @@
   width: 95%;
   height: 46px;
 }
-.popup__form-button:hover {
+.popup__form-button_active:hover {
   opacity: 0.8;
   filter: drop-shadow(0 4px 4px #000);
   cursor: pointer;

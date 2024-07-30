@@ -41,18 +41,21 @@ const formConfig = {
   inputSelector: ".popup__form-input",
   submitButtonSelector: ".popup__form-button",
   inactiveButtonClass: "popup__form-button_disabled",
-  activeButtonClass: "popup__form-button",
+  activeButtonClass: "popup__form-button_active",
   inputErrorClass: "popup__form-input_error",
   errorClass: "popup__input-error_active",
   fieldsetSelector: ".popup__form-set",
 };
 
 const formSelectorProfile = document.querySelector(".popup__form-profile");
-const profileFormValidation = new FormValidator(
+export const profileFormValidation = new FormValidator(
   formConfig,
   formSelectorProfile
 );
 profileFormValidation.enableValidation();
 const formSelectorImage = document.querySelector(".popup__form-image");
-const imageFormValidation = new FormValidator(formConfig, formSelectorImage);
+export const imageFormValidation = new FormValidator(
+  formConfig,
+  formSelectorImage
+);
 imageFormValidation.enableValidation();

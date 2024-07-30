@@ -72,4 +72,25 @@ export class FormValidator {
       this._setEventListeners(fieldset);
     });
   }
+  resetValidation() {
+    const inputList = Array.from(
+      this.formSelector.querySelectorAll(".popup__form-input")
+    );
+    inputList.forEach((inputElement) => {
+      inputElement.nextElementSibling.classList.remove(
+        "popup__form-input_error"
+      );
+      const errorElement = this.formSelector.querySelector(
+        `.${inputElement.id}-error`
+      );
+      errorElement.classList.remove("popup__input-error_active");
+      errorElement.textContent = "";
+    });
+    const buttonElement = this.formSelector.querySelector(
+      ".popup__form-button"
+    );
+    buttonElement.disabled = true;
+    buttonElement.classList.add("popup__form-button_disabled");
+    buttonElement.classList.remove("popup__form-button_active");
+  }
 }
