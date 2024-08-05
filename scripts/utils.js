@@ -1,5 +1,6 @@
 import { Card } from "./Card.js";
 import { imageFormValidation, profileFormValidation } from "./index.js";
+import { Section } from "./Section.js";
 //Funciones de mostrar , ocultar y toggle popup
 function showPopup(form) {
   form.classList.add("popup__opened");
@@ -64,15 +65,21 @@ const inputTitle = popupElements.querySelector(".popup__form-title");
 const inputLink = popupElements.querySelector(".popup__form-link");
 elementForm.addEventListener("submit", function (event) {
   event.preventDefault();
-  let data = {
-    link: inputLink.value,
-    name: inputTitle.value,
-  };
-  let newCard = new Card(data, ".element__template");
-  const newCardElement = newCard.generateCard();
+  let data = [
+    {
+      link: inputLink.value,
+      name: inputTitle.value,
+    },
+  ];
   togglePopup(popupElements);
   elementForm.reset();
-  elementsArea.prepend(newCardElement);
+  const newCardElement = new Section(
+    {
+      items: data,
+    },
+    elementsArea
+  );
+  newCardElement.renderer();
 });
 
 //Función boton cerrar popup image
