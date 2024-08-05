@@ -1,4 +1,4 @@
-import { togglePopup } from "./utils.js";
+import { showPopup } from "./utils.js";
 export class Card {
   constructor(data, cardSelector) {
     this._link = data.link;
@@ -40,7 +40,7 @@ export class Card {
       .querySelector(".element__image")
       .addEventListener("click", () => {
         let popupImage = document.querySelector(".popup-image-fullscreen");
-        togglePopup(popupImage);
+        showPopup(popupImage);
         /*funcion llamar info al popup*/
         popupImage.querySelector(".popup__image").src = this._link;
         popupImage.querySelector(".popup__title-image").textContent =
