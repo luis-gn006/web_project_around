@@ -34,7 +34,7 @@ function callProfileInfo() {
   nameForm.value = profileName.textContent;
   jobForm.value = profileJob.textContent;
 }
-
+/*
 //Visulación profile popup
 editButton.addEventListener("click", function () {
   showPopup(popupProfile);
@@ -45,6 +45,7 @@ closeButtonProfile.addEventListener("click", function () {
 });
 
 //Visulación elements popup
+
 addButton.addEventListener("click", function () {
   showPopup(popupElements);
 });
@@ -52,6 +53,7 @@ closeButtonElements.addEventListener("click", function () {
   hidePopup(popupElements);
   elementForm.reset();
 });
+*/
 
 //Función editar profile
 function handleProfileFormSubmit(evt) {

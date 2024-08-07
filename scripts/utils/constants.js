@@ -18,7 +18,7 @@ const elementForm = popupElements.querySelector(".popup__form-image");
 const inputTitle = popupElements.querySelector(".popup__form-title");
 const inputLink = popupElements.querySelector(".popup__form-link");
 
-const closeButtonImage = document.querySelector(".popup__button-image");
+const closeButtonImage = document.querySelector(".popup__close-image");
 const popupImage = document.querySelector(".popup-image-fullscreen");
 
 export {

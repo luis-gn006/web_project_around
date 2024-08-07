@@ -36,12 +36,13 @@ export class Card {
       });
 
     // abrir popup image
+    /*
     this._element
       .querySelector(".element__image")
       .addEventListener("click", () => {
         let popupImage = document.querySelector(".popup-image-fullscreen");
         showPopup(popupImage);
-        /*funcion llamar info al popup*/
+        ///funcion llamar info al popup
         popupImage.querySelector(".popup__image").src = this._link;
         popupImage.querySelector(".popup__title-image").textContent =
           this._name;
@@ -49,6 +50,7 @@ export class Card {
           ".popup__image"
         ).alt = `imagen de ${this._name} `;
       });
+*/
     return this._element;
   }
 }
