@@ -1,12 +1,11 @@
-import PopupWithImage from "./PopupWithImage.js";
-import { popupImage } from "./utils/constants.js";
 export default class Card {
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, { handleCardClick }) {
     this._link = data.link;
     this._name = data.name;
     this._cardSelector = cardSelector;
+    this._handleCardClick = handleCardClick;
   }
-
+  //Copiar template
   _getTemplate() {
     const cardElement = document
       .querySelector(this._cardSelector)
@@ -15,6 +14,7 @@ export default class Card {
 
     return cardElement;
   }
+  //Generar Tarjeta
   generateCard() {
     this._element = this._getTemplate();
 
@@ -23,28 +23,25 @@ export default class Card {
     this._element.querySelector(
       ".element__image"
     ).alt = `imagen de ${this._name} `;
-    // like button
+    //Like button
     this._element
       .querySelector(".element__button-like")
       .addEventListener("click", function (evt) {
         evt.target.classList.toggle("element__button-like-active");
       });
-    // trash button
+    //Trash button
     this._element
       .querySelector(".element__button-trash")
       .addEventListener("click", function (evt) {
         evt.target.parentNode.parentNode.remove();
       });
-    // abrir popup image
+    //Abrir popup image
     this.handleCardClick();
     return this._element;
   }
   handleCardClick() {
     this._element
       .querySelector(".element__image")
-      .addEventListener("click", () => {
-        const imagePopup = new PopupWithImage(popupImage);
-        imagePopup.open(this._link, this._name);
-      });
+      .addEventListener("click", this._handleCardClick);
   }
 }

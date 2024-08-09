@@ -42,12 +42,18 @@ const initialCards = [
   },
 ];
 
-//Cargar imagenes de inicio
+//Instancia Popup With Image
+export const imagePopup = new PopupWithImage(popupImage);
+//Cargar imagenes default
 const defaultCardList = new Section(
   {
     items: initialCards,
     renderer: (item) => {
-      const card = new Card(item, ".element__template");
+      const card = new Card(item, ".element__template", {
+        handleCardClick: () => {
+          imagePopup.open(item.link, item.name);
+        },
+      });
       const cardElement = card.generateCard();
       defaultCardList.addItem(cardElement);
     },

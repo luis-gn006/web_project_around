@@ -19,6 +19,7 @@ import {
   profileFormValidation,
   elementFormPopup,
   imageFormValidation,
+  imagePopup,
 } from "./index.js";
 
 //Función editar profile
@@ -44,7 +45,11 @@ elementForm.addEventListener("submit", function (event) {
     {
       items: data,
       renderer: (item) => {
-        const card = new Card(item, ".element__template");
+        const card = new Card(item, ".element__template", {
+          handleCardClick: () => {
+            imagePopup.open(item.link, item.name);
+          },
+        });
         const cardElement = card.generateCard();
         newCardElement.addItemPrep(cardElement);
       },

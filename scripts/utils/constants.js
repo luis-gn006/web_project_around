@@ -12,6 +12,7 @@ const profileName = document.querySelector(".profile__name");
 const profileJob = document.querySelector(".profile__job");
 const nameForm = document.querySelector(".popup__form-name");
 const jobForm = document.querySelector(".popup__form-job");
+
 export {
   profileName,
   profileJob,
