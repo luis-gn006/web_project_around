@@ -1,4 +1,5 @@
-import { showPopup } from "./utils.js";
+import PopupWithImage from "./PopupWithImage.js";
+import { popupImage } from "./utils/constants.js";
 export class Card {
   constructor(data, cardSelector) {
     this._link = data.link;
@@ -34,23 +35,16 @@ export class Card {
       .addEventListener("click", function (evt) {
         evt.target.parentNode.parentNode.remove();
       });
-
     // abrir popup image
-    /*
+    this.handleCardClick();
+    return this._element;
+  }
+  handleCardClick() {
     this._element
       .querySelector(".element__image")
       .addEventListener("click", () => {
-        let popupImage = document.querySelector(".popup-image-fullscreen");
-        showPopup(popupImage);
-        ///funcion llamar info al popup
-        popupImage.querySelector(".popup__image").src = this._link;
-        popupImage.querySelector(".popup__title-image").textContent =
-          this._name;
-        popupImage.querySelector(
-          ".popup__image"
-        ).alt = `imagen de ${this._name} `;
+        const imagePopup = new PopupWithImage(popupImage);
+        imagePopup.open(this._link, this._name);
       });
-*/
-    return this._element;
   }
 }

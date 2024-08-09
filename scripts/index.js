@@ -6,11 +6,14 @@ import {
   popupImage,
   popupElements,
   popupProfile,
-  addButton,
-  editButton,
+  profileJob,
+  profileName,
+  nameForm,
+  jobForm,
 } from "./utils/constants.js";
 import PopupWithImage from "./PopupWithImage.js";
 import PopupWithForm from "./PopupWithForm.js";
+import UserInfo from "./UserInfo.js";
 
 const initialCards = [
   {
@@ -53,15 +56,18 @@ const defaultCardList = new Section(
 );
 defaultCardList.renderer();
 
-const profileFormPopup = new PopupWithForm(popupProfile);
-const elemntFormPopup = new PopupWithForm(popupElements);
-
-editButton.addEventListener("click", function () {
-  profileFormPopup.open();
-});
-addButton.addEventListener("click", function () {
-  elemntFormPopup.open();
-});
+//Popups instancias
+export const profileFormPopup = new PopupWithForm(popupProfile);
+export const elementFormPopup = new PopupWithForm(popupElements);
+//Cargar info popupprofile
+export const profileInfo = new UserInfo(
+  {
+    userName: profileName,
+    userJob: profileJob,
+  },
+  nameForm,
+  jobForm
+);
 
 //FormValidator
 const formConfig = {
@@ -74,6 +80,7 @@ const formConfig = {
   fieldsetSelector: ".popup__form-set",
 };
 
+//Instancias FormValidator
 const formSelectorProfile = document.querySelector(".popup__form-profile");
 export const profileFormValidation = new FormValidator(
   formConfig,

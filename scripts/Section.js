@@ -7,12 +7,14 @@ export class Section {
   addItem(element) {
     this._container.append(element);
   }
+  addItemPrep(element) {
+    this._container.prepend(element);
+  }
+
   clear() {
     this._container.innerHTML = "";
   }
   renderer() {
-    this.clear();
-
     this._items.forEach((item) => {
       this._renderer(item);
     });
