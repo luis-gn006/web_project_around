@@ -1,7 +1,7 @@
-import { Card } from "./Card.js";
-import { FormValidator } from "./FormValidator.js";
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
 import { elementsArea } from "./utils.js";
-import { Section } from "./Section.js";
+import Section from "./Section.js";
 import {
   popupImage,
   popupElements,

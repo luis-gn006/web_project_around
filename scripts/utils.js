@@ -11,8 +11,8 @@ import {
   addButton,
   editButton,
 } from "./utils/constants.js";
-import { Section } from "./Section.js";
-import { Card } from "./Card.js";
+import Section from "./Section.js";
+import Card from "./Card.js";
 import {
   profileFormPopup,
   profileInfo,
