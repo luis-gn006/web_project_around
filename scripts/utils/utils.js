@@ -10,9 +10,9 @@ import {
   inputLink,
   addButton,
   editButton,
-} from "./utils/constants.js";
-import Section from "./Section.js";
-import Card from "./Card.js";
+} from "./constants.js";
+import Section from "../components/Section.js";
+import Card from "../components/Card.js";
 import {
   profileFormPopup,
   profileInfo,
@@ -20,7 +20,7 @@ import {
   elementFormPopup,
   imageFormValidation,
   imagePopup,
-} from "./index.js";
+} from "../pages/index.js";
 
 //Función editar profile
 function handleProfileFormSubmit(evt) {
