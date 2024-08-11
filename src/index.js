@@ -1,7 +1,8 @@
-import Card from "../components/Card.js";
-import FormValidator from "../components/FormValidator.js";
-import { elementsArea } from "../utils/utils.js";
-import Section from "../components/Section.js";
+import "./pages/index.css";
+import Card from "./scripts/components/Card.js";
+import FormValidator from "./scripts/components/FormValidator.js";
+import { elementsArea } from "./scripts/utils.js";
+import Section from "./scripts/components/Section.js";
 import {
   popupImage,
   popupElements,
@@ -12,10 +13,10 @@ import {
   jobForm,
   initialCards,
   formConfig,
-} from "../utils/constants.js";
-import PopupWithImage from "../components/PopupWithImage.js";
-import PopupWithForm from "../components/PopupWithForm.js";
-import UserInfo from "../components/UserInfo.js";
+} from "./scripts/utils/constants.js";
+import PopupWithImage from "./scripts/components/PopupWithImage.js";
+import PopupWithForm from "./scripts/components/PopupWithForm.js";
+import UserInfo from "./scripts/components/UserInfo.js";
 
 //Instancia Popup With Image
 export const imagePopup = new PopupWithImage(popupImage);

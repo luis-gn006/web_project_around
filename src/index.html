@@ -7,13 +7,12 @@
     <meta name="description" content="Alrededor de los EEUU" />
     <meta name="keywords" content="HTML, CSS, JS" />
     <title>Alrededor de los EEUU</title>
-    <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body>
     <div class="page">
       <header class="header">
         <img
-          src="./images/header__logo.svg"
+          src="<%=require('./images/header__logo.svg')%>"
           alt="logo Arround the US"
           class="header__logo"
         />
@@ -23,7 +22,7 @@
         <section class="profile">
           <div class="profile__column-left">
             <img
-              src="./images/profile__image.jpg"
+              src="<%=require('./images/profile__image.jpg')%>"
               alt="imagen de perfil"
               class="profile__avatar"
             />
@@ -153,6 +152,6 @@
         </div>
       </div>
     </template>
-    <script type="module" src="./scripts/pages/index.js"></script>
+
   </body>
 </html>
