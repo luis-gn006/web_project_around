@@ -49,6 +49,7 @@ elementForm.addEventListener("submit", function (event) {
     {
       items: data,
       renderer: (item) => {
+        apiTriple.postNewCard(item.name, item.link);
         const card = new Card(item, ".element__template", {
           handleCardClick: () => {
             imagePopup.open(item.link, item.name);
@@ -72,12 +73,10 @@ editButton.addEventListener("click", function () {
       {
         userName: user.name,
         userJob: user.about,
-      },
-      nameForm,
-      jobForm
+      }
     );
 
-  profileInfo.setUserInfo(user.name, user.about);
+  profileInfo.setUserInfoForm(nameForm, jobForm);
 });
   profileFormValidation.resetValidation();
 });

@@ -1,11 +1,12 @@
 export default class Api {
-  constructor(url){
+  constructor(url,authorization){
     this._url = url;
+    this._authorization = authorization
   }
   getUserInfo(){
     return fetch(`${this._url}/users/me`, {
       headers: {
-        authorization: "541d0e53-114b-4fb1-9af0-b09c04c191b9",
+        authorization: this._authorization,
       }
     })
       .then((res) => {
@@ -15,7 +16,7 @@ export default class Api {
   getInitialCards(){
     return fetch(`${this._url}/cards`, {
       headers: {
-        authorization: "541d0e53-114b-4fb1-9af0-b09c04c191b9",
+        authorization: this._authorization,
       }
     })
       .then((res) => {
@@ -23,10 +24,10 @@ export default class Api {
       });
   }
   patchUserInfo(name, about){
-    return fetch("https://around.nomoreparties.co/v1/web_es_10/users/me", {
+    return fetch(`${this._url}/users/me`, {
       method: "PATCH",
       headers: {
-        authorization: "541d0e53-114b-4fb1-9af0-b09c04c191b9",
+        authorization: this._authorization,
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
@@ -35,7 +36,31 @@ export default class Api {
       })
     });
   }
-
+  postNewCard(cardName, cardlink){
+    return fetch(`${this._url}/cards`, {
+      method: "POST",
+      headers: {
+        authorization: this._authorization,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: cardName,
+        link: cardlink
+      }),
+    })
+    .then((response) => response.json())
+    .then((json) => console.log(json));
+  }
+  likes(){
+    return fetch(`${this._url}/cards`, {
+      headers: {
+        authorization: this._authorization,
+      }
+    })
+      .then((res) => {
+        return res.json();
+      });
+  }
 }
 
 

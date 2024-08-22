@@ -17,15 +17,15 @@ import {
 import PopupWithImage from "./scripts/components/PopupWithImage.js";
 import PopupWithForm from "./scripts/components/PopupWithForm.js";
 import Api from "./scripts/components/Api.js";
-
+import UserInfo from "./scripts/components/UserInfo.js";
 //Instancia Popup With Image
 export const imagePopup = new PopupWithImage(popupImage);
 //Cargar imagenes default
-export const apiTriple = new Api("https://around.nomoreparties.co/v1/web_es_10")
+export const apiTriple = new Api("https://around.nomoreparties.co/v1/web_es_10","541d0e53-114b-4fb1-9af0-b09c04c191b9")
 
 
 apiTriple.getInitialCards().then((cards) => {
-
+  console.log(cards);
   const defaultCardList = new Section(
     {
       items: cards,
@@ -43,7 +43,18 @@ apiTriple.getInitialCards().then((cards) => {
   );
   defaultCardList.renderer();
 });
+//cargar info profile
+apiTriple.getUserInfo().then((user) => {
+  console.log(user);
+  const profileInfo = new UserInfo(
+    {
+      userName: user.name,
+      userJob: user.about,
+    }
+  );
 
+profileInfo.setUserInfoProfile(profileName, profileJob);
+});
 //Popups instancias
 export const profileFormPopup = new PopupWithForm(popupProfile);
 export const elementFormPopup = new PopupWithForm(popupElements);
@@ -65,5 +76,6 @@ imageFormValidation.enableValidation();
 
 
 
+//check likes card
 
 
