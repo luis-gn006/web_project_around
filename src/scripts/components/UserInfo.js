@@ -9,9 +9,9 @@ export default class UserInfo {
     this._newUserName = this.userName.textContent;
     this._newUserJob = this.userJob.textContent;
   }
-  setUserInfo() {
+  setUserInfo(name,job) {
     this.getUserInfo();
-    this.formName.value = this._newUserName;
-    this.formJob.value = this._newUserJob;
+    this.formName.value = name;
+    this.formJob.value = job;
   }
 }

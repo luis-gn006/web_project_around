@@ -16,7 +16,7 @@
 
 ## Preview del Proyecto:
 
-![alt text](./images/preview__projecto-around.png)
+![alt text](./src/images/preview__projecto-around.png)
 
 ## Aprendizaje:
 

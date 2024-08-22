@@ -15,18 +15,22 @@ import Section from "./components/Section.js";
 import Card from "./components/Card.js";
 import {
   profileFormPopup,
-  profileInfo,
+  //profileInfo,
   profileFormValidation,
   elementFormPopup,
   imageFormValidation,
   imagePopup,
+  apiTriple
 } from "../index.js";
+import UserInfo from "./components/UserInfo.js";
 
 //Función editar profile
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = nameForm.value;
   profileJob.textContent = jobForm.value;
+  apiTriple.patchUserInfo(nameForm.value, jobForm.value);
+
 }
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 
@@ -61,7 +65,20 @@ elementForm.addEventListener("submit", function (event) {
 
 editButton.addEventListener("click", function () {
   profileFormPopup.open();
-  profileInfo.setUserInfo();
+  //Cargar info popupprofile
+  apiTriple.getUserInfo().then((user) => {
+    console.log(user);
+    const profileInfo = new UserInfo(
+      {
+        userName: user.name,
+        userJob: user.about,
+      },
+      nameForm,
+      jobForm
+    );
+
+  profileInfo.setUserInfo(user.name, user.about);
+});
   profileFormValidation.resetValidation();
 });
 addButton.addEventListener("click", function () {

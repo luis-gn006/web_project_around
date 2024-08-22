@@ -16,40 +16,38 @@ import {
 } from "./scripts/utils/constants.js";
 import PopupWithImage from "./scripts/components/PopupWithImage.js";
 import PopupWithForm from "./scripts/components/PopupWithForm.js";
-import UserInfo from "./scripts/components/UserInfo.js";
+import Api from "./scripts/components/Api.js";
 
 //Instancia Popup With Image
 export const imagePopup = new PopupWithImage(popupImage);
 //Cargar imagenes default
-const defaultCardList = new Section(
-  {
-    items: initialCards,
-    renderer: (item) => {
-      const card = new Card(item, ".element__template", {
-        handleCardClick: () => {
-          imagePopup.open(item.link, item.name);
-        },
-      });
-      const cardElement = card.generateCard();
-      defaultCardList.addItem(cardElement);
+export const apiTriple = new Api("https://around.nomoreparties.co/v1/web_es_10")
+
+
+apiTriple.getInitialCards().then((cards) => {
+
+  const defaultCardList = new Section(
+    {
+      items: cards,
+      renderer: (item) => {
+        const card = new Card(item, ".element__template", {
+          handleCardClick: () => {
+            imagePopup.open(item.link, item.name);
+          },
+        });
+        const cardElement = card.generateCard();
+        defaultCardList.addItem(cardElement);
+      },
     },
-  },
-  elementsArea
-);
-defaultCardList.renderer();
+    elementsArea
+  );
+  defaultCardList.renderer();
+});
 
 //Popups instancias
 export const profileFormPopup = new PopupWithForm(popupProfile);
 export const elementFormPopup = new PopupWithForm(popupElements);
-//Cargar info popupprofile
-export const profileInfo = new UserInfo(
-  {
-    userName: profileName,
-    userJob: profileJob,
-  },
-  nameForm,
-  jobForm
-);
+
 
 //Instancias FormValidator
 const formSelectorProfile = document.querySelector(".popup__form-profile");
@@ -64,3 +62,8 @@ export const imageFormValidation = new FormValidator(
   formSelectorImage
 );
 imageFormValidation.enableValidation();
+
+
+
+
+
