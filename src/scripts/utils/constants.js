@@ -3,6 +3,7 @@ const addButton = document.querySelector(".profile__button-add");
 const popupProfile = document.querySelector(".popup-profile");
 const popupElements = document.querySelector(".popup-elements");
 const popupImage = document.querySelector(".popup-image-fullscreen");
+const popupDelete = document.querySelector(".popup-delete-card");
 const inputTitle = popupElements.querySelector(".popup__form-title");
 const inputLink = popupElements.querySelector(".popup__form-link");
 const elementForm = popupElements.querySelector(".popup__form-image");
@@ -66,4 +67,5 @@ export {
   popupImage,
   initialCards,
   formConfig,
+  popupDelete
 };

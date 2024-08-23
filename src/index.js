@@ -13,9 +13,11 @@ import {
   jobForm,
   initialCards,
   formConfig,
+  popupDelete
 } from "./scripts/utils/constants.js";
 import PopupWithImage from "./scripts/components/PopupWithImage.js";
 import PopupWithForm from "./scripts/components/PopupWithForm.js";
+import PopupWithConfirmation from "./scripts/components/PopupWithConfirmation.js";
 import Api from "./scripts/components/Api.js";
 import UserInfo from "./scripts/components/UserInfo.js";
 //Instancia Popup With Image
@@ -58,6 +60,7 @@ profileInfo.setUserInfoProfile(profileName, profileJob);
 //Popups instancias
 export const profileFormPopup = new PopupWithForm(popupProfile);
 export const elementFormPopup = new PopupWithForm(popupElements);
+export const deleteFormPopup = new PopupWithConfirmation(popupDelete);
 
 
 //Instancias FormValidator
