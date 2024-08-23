@@ -49,12 +49,13 @@ elementForm.addEventListener("submit", function (event) {
     {
       items: data,
       renderer: (item) => {
+        console.log(item);
         apiTriple.postNewCard(item.name, item.link);
         const card = new Card(item, ".element__template", {
           handleCardClick: () => {
             imagePopup.open(item.link, item.name);
           },
-        });
+        },{handleButtonTrash: true});
         const cardElement = card.generateCard();
         newCardElement.addItemPrep(cardElement);
       },
@@ -84,5 +85,7 @@ addButton.addEventListener("click", function () {
   elementFormPopup.open();
   imageFormValidation.resetValidation();
 });
+
+// f
 
 export { elementsArea };

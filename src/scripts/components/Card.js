@@ -1,10 +1,11 @@
 export default class Card {
-  constructor(data, cardSelector, { handleCardClick }) {
+  constructor(data, cardSelector, { handleCardClick }, {handleButtonTrash}) {
     this._link = data.link;
     this._name = data.name;
     this._likes = data.likes.length;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
+    this._handleButtonTrash = handleButtonTrash;
   }
   //Copiar template
   _getTemplate() {
@@ -36,11 +37,13 @@ export default class Card {
         evt.target.classList.toggle("element__button-like-active");
       });
     //Trash button
+    if(this._handleButtonTrash){
     this._element
       .querySelector(".element__button-trash")
       .addEventListener("click", function (evt) {
         evt.target.parentNode.parentNode.remove();
-      });
+      });} else {this._element
+        .querySelector(".element__button-trash").classList.add("element__button-trash-hide");}
     //Abrir popup image
     this.handleCardClick();
     return this._element;

@@ -25,26 +25,29 @@ export const imagePopup = new PopupWithImage(popupImage);
 //Cargar imagenes default
 export const apiTriple = new Api("https://around.nomoreparties.co/v1/web_es_10","541d0e53-114b-4fb1-9af0-b09c04c191b9")
 
-
-apiTriple.getInitialCards().then((cards) => {
-  console.log(cards);
-  const defaultCardList = new Section(
-    {
-      items: cards,
-      renderer: (item) => {
-        const card = new Card(item, ".element__template", {
-          handleCardClick: () => {
-            imagePopup.open(item.link, item.name);
-          },
-        });
-        const cardElement = card.generateCard();
-        defaultCardList.addItem(cardElement);
+apiTriple.getUserInfo().then((user) => {
+  apiTriple.getInitialCards().then((cards) => {
+    console.log(cards);
+    const defaultCardList = new Section(
+      {
+        items: cards,
+        renderer: (item) => {
+          console.log(item.owner._id);
+          const card = new Card(item, ".element__template", {
+            handleCardClick: () => {
+              imagePopup.open(item.link, item.name);
+            },
+          },{handleButtonTrash: user._id == item.owner._id});
+          const cardElement = card.generateCard();
+          defaultCardList.addItem(cardElement);
+        },
       },
-    },
-    elementsArea
-  );
-  defaultCardList.renderer();
+      elementsArea
+    );
+    defaultCardList.renderer();
+  });
 });
+
 //cargar info profile
 apiTriple.getUserInfo().then((user) => {
   console.log(user);
@@ -76,6 +79,8 @@ export const imageFormValidation = new FormValidator(
   formSelectorImage
 );
 imageFormValidation.enableValidation();
+
+
 
 
 

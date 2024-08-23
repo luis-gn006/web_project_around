@@ -45,7 +45,8 @@ export default class Api {
       },
       body: JSON.stringify({
         name: cardName,
-        link: cardlink
+        link: cardlink,
+        likes: [],
       }),
     })
     .then((response) => response.json())
@@ -61,6 +62,16 @@ export default class Api {
         return res.json();
       });
   }
+  deleteCard(cardId) {
+    return fetch(`${this._url}/cards/${cardId}`, {
+      headers: {
+        authorization: this._authorization,
+      }
+    })
+    .then((response) => response.json())
+    .then((json) => console.log(json));
+  }
+
 }
 
 
