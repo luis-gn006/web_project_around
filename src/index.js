@@ -13,7 +13,7 @@ import {
   jobForm,
   initialCards,
   formConfig,
-  popupDelete
+  popupDelete,
 } from "./scripts/utils/constants.js";
 import PopupWithImage from "./scripts/components/PopupWithImage.js";
 import PopupWithForm from "./scripts/components/PopupWithForm.js";
@@ -23,7 +23,10 @@ import UserInfo from "./scripts/components/UserInfo.js";
 //Instancia Popup With Image
 export const imagePopup = new PopupWithImage(popupImage);
 //Cargar imagenes default
-export const apiTriple = new Api("https://around.nomoreparties.co/v1/web_es_10","541d0e53-114b-4fb1-9af0-b09c04c191b9")
+export const apiTriple = new Api(
+  "https://around.nomoreparties.co/v1/web_es_10",
+  "541d0e53-114b-4fb1-9af0-b09c04c191b9"
+);
 
 apiTriple.getUserInfo().then((user) => {
   apiTriple.getInitialCards().then((cards) => {
@@ -33,11 +36,22 @@ apiTriple.getUserInfo().then((user) => {
         items: cards,
         renderer: (item) => {
           console.log(item.owner._id);
-          const card = new Card(item, ".element__template", {
-            handleCardClick: () => {
-              imagePopup.open(item.link, item.name);
+          const card = new Card(
+            item,
+            ".element__template",
+            {
+              handleCardClick: () => {
+                imagePopup.open(item.link, item.name);
+              },
             },
-          },{handleButtonTrash: user._id == item.owner._id});
+            { handleButtonTrash: user._id == item.owner._id },
+            {
+              handlePopupDelete: () => {
+                deleteFormPopup.open();
+                console.log(item._id);
+              },
+            }
+          );
           const cardElement = card.generateCard();
           defaultCardList.addItem(cardElement);
         },
@@ -51,20 +65,17 @@ apiTriple.getUserInfo().then((user) => {
 //cargar info profile
 apiTriple.getUserInfo().then((user) => {
   console.log(user);
-  const profileInfo = new UserInfo(
-    {
-      userName: user.name,
-      userJob: user.about,
-    }
-  );
+  const profileInfo = new UserInfo({
+    userName: user.name,
+    userJob: user.about,
+  });
 
-profileInfo.setUserInfoProfile(profileName, profileJob);
+  profileInfo.setUserInfoProfile(profileName, profileJob);
 });
 //Popups instancias
 export const profileFormPopup = new PopupWithForm(popupProfile);
 export const elementFormPopup = new PopupWithForm(popupElements);
 export const deleteFormPopup = new PopupWithConfirmation(popupDelete);
-
 
 //Instancias FormValidator
 const formSelectorProfile = document.querySelector(".popup__form-profile");
@@ -79,9 +90,3 @@ export const imageFormValidation = new FormValidator(
   formSelectorImage
 );
 imageFormValidation.enableValidation();
-
-
-
-
-
-

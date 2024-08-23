@@ -1,42 +1,40 @@
 export default class Api {
-  constructor(url,authorization){
+  constructor(url, authorization) {
     this._url = url;
-    this._authorization = authorization
+    this._authorization = authorization;
   }
-  getUserInfo(){
+  getUserInfo() {
     return fetch(`${this._url}/users/me`, {
       headers: {
         authorization: this._authorization,
-      }
-    })
-      .then((res) => {
-        return res.json();
-      })
+      },
+    }).then((res) => {
+      return res.json();
+    });
   }
-  getInitialCards(){
+  getInitialCards() {
     return fetch(`${this._url}/cards`, {
       headers: {
         authorization: this._authorization,
-      }
-    })
-      .then((res) => {
-        return res.json();
-      });
+      },
+    }).then((res) => {
+      return res.json();
+    });
   }
-  patchUserInfo(name, about){
+  patchUserInfo(name, about) {
     return fetch(`${this._url}/users/me`, {
       method: "PATCH",
       headers: {
         authorization: this._authorization,
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         name: name,
-        about: about
-      })
+        about: about,
+      }),
     });
   }
-  postNewCard(cardName, cardlink){
+  postNewCard(cardName, cardlink) {
     return fetch(`${this._url}/cards`, {
       method: "POST",
       headers: {
@@ -49,30 +47,26 @@ export default class Api {
         likes: [],
       }),
     })
-    .then((response) => response.json())
-    .then((json) => console.log(json));
+      .then((response) => response.json())
+      .then((json) => console.log(json));
   }
-  likes(){
+  likes() {
     return fetch(`${this._url}/cards`, {
       headers: {
         authorization: this._authorization,
-      }
-    })
-      .then((res) => {
-        return res.json();
-      });
+      },
+    }).then((res) => {
+      return res.json();
+    });
   }
   deleteCard(cardId) {
     return fetch(`${this._url}/cards/${cardId}`, {
+      method: "DELETE",
       headers: {
         authorization: this._authorization,
-      }
+      },
     })
-    .then((response) => response.json())
-    .then((json) => console.log(json));
+      .then((response) => response.json())
+      .then((json) => console.log(json));
   }
-
 }
-
-
-

@@ -1,11 +1,19 @@
 export default class Card {
-  constructor(data, cardSelector, { handleCardClick }, {handleButtonTrash}) {
+  constructor(
+    data,
+    cardSelector,
+    { handleCardClick },
+    { handleButtonTrash },
+    { handlePopupDelete }
+  ) {
     this._link = data.link;
     this._name = data.name;
     this._likes = data.likes.length;
+    this._id = data._id;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
     this._handleButtonTrash = handleButtonTrash;
+    this._handlePopupDelete = handlePopupDelete;
   }
   //Copiar template
   _getTemplate() {
@@ -24,8 +32,8 @@ export default class Card {
     this._element.querySelector(".element__name").textContent = this._name;
     if (this._likes == "0") {
       this._element.querySelector(".element__likes").textContent = "";
-    }else{
-    this._element.querySelector(".element__likes").textContent = this._likes;
+    } else {
+      this._element.querySelector(".element__likes").textContent = this._likes;
     }
     this._element.querySelector(
       ".element__image"
@@ -37,13 +45,13 @@ export default class Card {
         evt.target.classList.toggle("element__button-like-active");
       });
     //Trash button
-    if(this._handleButtonTrash){
-    this._element
-      .querySelector(".element__button-trash")
-      .addEventListener("click", function (evt) {
-        evt.target.parentNode.parentNode.remove();
-      });} else {this._element
-        .querySelector(".element__button-trash").classList.add("element__button-trash-hide");}
+    this.handlePopupDelete();
+    if (this._handleButtonTrash) {
+    } else {
+      this._element
+        .querySelector(".element__button-trash")
+        .classList.add("element__button-trash-hide");
+    }
     //Abrir popup image
     this.handleCardClick();
     return this._element;
@@ -52,5 +60,10 @@ export default class Card {
     this._element
       .querySelector(".element__image")
       .addEventListener("click", this._handleCardClick);
+  }
+  handlePopupDelete() {
+    this._element
+      .querySelector(".element__button-trash")
+      .addEventListener("click", this._handlePopupDelete);
   }
 }
