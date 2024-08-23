@@ -76,6 +76,4 @@ imageFormValidation.enableValidation();
 
 
 
-//check likes card
-
 
