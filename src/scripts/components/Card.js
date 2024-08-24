@@ -54,6 +54,7 @@ export default class Card {
     }
     //Abrir popup image
     this.handleCardClick();
+    this.handlePopupDelete();
     return this._element;
   }
   handleCardClick() {

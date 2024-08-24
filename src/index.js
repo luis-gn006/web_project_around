@@ -47,8 +47,14 @@ apiTriple.getUserInfo().then((user) => {
             { handleButtonTrash: user._id == item.owner._id },
             {
               handlePopupDelete: () => {
-                deleteFormPopup.open();
                 console.log(item._id);
+
+                const deleteFormPopup = new PopupWithConfirmation(popupDelete, {
+                  handleSubmit: () => {
+                    apiTriple.deleteCard(item._id);
+                  },
+                });
+                deleteFormPopup.open();
               },
             }
           );
@@ -75,7 +81,6 @@ apiTriple.getUserInfo().then((user) => {
 //Popups instancias
 export const profileFormPopup = new PopupWithForm(popupProfile);
 export const elementFormPopup = new PopupWithForm(popupElements);
-export const deleteFormPopup = new PopupWithConfirmation(popupDelete);
 
 //Instancias FormValidator
 const formSelectorProfile = document.querySelector(".popup__form-profile");

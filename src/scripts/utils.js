@@ -20,7 +20,7 @@ import {
   elementFormPopup,
   imageFormValidation,
   imagePopup,
-  apiTriple
+  apiTriple,
 } from "../index.js";
 import UserInfo from "./components/UserInfo.js";
 
@@ -30,7 +30,6 @@ function handleProfileFormSubmit(evt) {
   profileName.textContent = nameForm.value;
   profileJob.textContent = jobForm.value;
   apiTriple.patchUserInfo(nameForm.value, jobForm.value);
-
 }
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 
@@ -51,11 +50,28 @@ elementForm.addEventListener("submit", function (event) {
       renderer: (item) => {
         console.log(item);
         apiTriple.postNewCard(item.name, item.link);
-        const card = new Card(item, ".element__template", {
-          handleCardClick: () => {
-            imagePopup.open(item.link, item.name);
+        const card = new Card(
+          item,
+          ".element__template",
+          {
+            handleCardClick: () => {
+              imagePopup.open(item.link, item.name);
+            },
           },
-        },{handleButtonTrash: true});
+          { handleButtonTrash: true },
+          {
+            handlePopupDelete: () => {
+              console.log(item._id);
+
+              const deleteFormPopup = new PopupWithConfirmation(popupDelete, {
+                handleSubmit: () => {
+                  apiTriple.deleteCard(item._id);
+                },
+              });
+              deleteFormPopup.open();
+            },
+          }
+        );
         const cardElement = card.generateCard();
         newCardElement.addItemPrep(cardElement);
       },
@@ -70,22 +86,18 @@ editButton.addEventListener("click", function () {
   //Cargar info popupprofile
   apiTriple.getUserInfo().then((user) => {
     console.log(user);
-    const profileInfo = new UserInfo(
-      {
-        userName: user.name,
-        userJob: user.about,
-      }
-    );
+    const profileInfo = new UserInfo({
+      userName: user.name,
+      userJob: user.about,
+    });
 
-  profileInfo.setUserInfoForm(nameForm, jobForm);
-});
+    profileInfo.setUserInfoForm(nameForm, jobForm);
+  });
   profileFormValidation.resetValidation();
 });
 addButton.addEventListener("click", function () {
   elementFormPopup.open();
   imageFormValidation.resetValidation();
 });
-
-// f
 
 export { elementsArea };
