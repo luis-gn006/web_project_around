@@ -20,6 +20,7 @@ import PopupWithForm from "./scripts/components/PopupWithForm.js";
 import PopupWithConfirmation from "./scripts/components/PopupWithConfirmation.js";
 import Api from "./scripts/components/Api.js";
 import UserInfo from "./scripts/components/UserInfo.js";
+
 //Instancia Popup With Image
 export const imagePopup = new PopupWithImage(popupImage);
 //Cargar imagenes default
@@ -38,6 +39,7 @@ apiTriple.getUserInfo().then((user) => {
           console.log(item.owner._id);
           const card = new Card(
             item,
+            item.likes.length,
             ".element__template",
             {
               handleCardClick: () => {
@@ -46,15 +48,12 @@ apiTriple.getUserInfo().then((user) => {
             },
             { handleButtonTrash: user._id == item.owner._id },
             {
-              handlePopupDelete: () => {
-                console.log(item._id);
-
-                const deleteFormPopup = new PopupWithConfirmation(popupDelete, {
-                  handleSubmit: () => {
-                    apiTriple.deleteCard(item._id);
-                  },
+              handlePopupDelete: (cardId, callback) => {
+                deleteFormPopup.open(() => {
+                  apiTriple.deleteCard(cardId).then(() => {
+                    callback();
+                  });
                 });
-                deleteFormPopup.open();
               },
             }
           );
@@ -81,6 +80,7 @@ apiTriple.getUserInfo().then((user) => {
 //Popups instancias
 export const profileFormPopup = new PopupWithForm(popupProfile);
 export const elementFormPopup = new PopupWithForm(popupElements);
+export const deleteFormPopup = new PopupWithConfirmation(popupDelete);
 
 //Instancias FormValidator
 const formSelectorProfile = document.querySelector(".popup__form-profile");

@@ -1,6 +1,7 @@
 export default class Card {
   constructor(
     data,
+    likes,
     cardSelector,
     { handleCardClick },
     { handleButtonTrash },
@@ -8,7 +9,7 @@ export default class Card {
   ) {
     this._link = data.link;
     this._name = data.name;
-    this._likes = data.likes.length;
+    this._likes = likes;
     this._id = data._id;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
@@ -31,7 +32,7 @@ export default class Card {
     this._element.querySelector(".element__image").src = this._link;
     this._element.querySelector(".element__name").textContent = this._name;
     if (this._likes == "0") {
-      this._element.querySelector(".element__likes").textContent = "";
+      this._element.querySelector(".element__likes").textContent = [];
     } else {
       this._element.querySelector(".element__likes").textContent = this._likes;
     }
@@ -52,6 +53,14 @@ export default class Card {
         .querySelector(".element__button-trash")
         .classList.add("element__button-trash-hide");
     }
+    this._element
+      .querySelector(".element__button-trash")
+      .addEventListener("click", (evt) => {
+        //evt.target.parentNode.parentNode.remove();
+        this._handlePopupDelete(this._id, () => {
+          this._element.remove();
+        });
+      });
     //Abrir popup image
     this.handleCardClick();
     this.handlePopupDelete();
@@ -62,9 +71,7 @@ export default class Card {
       .querySelector(".element__image")
       .addEventListener("click", this._handleCardClick);
   }
-  handlePopupDelete() {
-    this._element
-      .querySelector(".element__button-trash")
-      .addEventListener("click", this._handlePopupDelete);
+  handlePopupDelete(evt) {
+    this._element.remove();
   }
 }

@@ -21,6 +21,7 @@ import {
   imageFormValidation,
   imagePopup,
   apiTriple,
+  deleteFormPopup,
 } from "../index.js";
 import UserInfo from "./components/UserInfo.js";
 
@@ -52,6 +53,7 @@ elementForm.addEventListener("submit", function (event) {
         apiTriple.postNewCard(item.name, item.link);
         const card = new Card(
           item,
+          [],
           ".element__template",
           {
             handleCardClick: () => {
@@ -60,15 +62,12 @@ elementForm.addEventListener("submit", function (event) {
           },
           { handleButtonTrash: true },
           {
-            handlePopupDelete: () => {
-              console.log(item._id);
-
-              const deleteFormPopup = new PopupWithConfirmation(popupDelete, {
-                handleSubmit: () => {
-                  apiTriple.deleteCard(item._id);
-                },
+            handlePopupDelete: (cardId, callback) => {
+              deleteFormPopup.open(() => {
+                apiTriple.deleteCard(cardId).then(() => {
+                  callback();
+                });
               });
-              deleteFormPopup.open();
             },
           }
         );

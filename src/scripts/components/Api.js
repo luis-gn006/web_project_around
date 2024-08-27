@@ -8,18 +8,32 @@ export default class Api {
       headers: {
         authorization: this._authorization,
       },
-    }).then((res) => {
-      return res.json();
-    });
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        return Promise.reject(`Error: ${response.status}`);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
   getInitialCards() {
     return fetch(`${this._url}/cards`, {
       headers: {
         authorization: this._authorization,
       },
-    }).then((res) => {
-      return res.json();
-    });
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        return Promise.reject(`Error: ${response.status}`);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
   patchUserInfo(name, about) {
     return fetch(`${this._url}/users/me`, {
@@ -32,7 +46,16 @@ export default class Api {
         name: name,
         about: about,
       }),
-    });
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        return Promise.reject(`Error: ${response.status}`);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
   postNewCard(cardName, cardlink) {
     return fetch(`${this._url}/cards`, {
@@ -47,17 +70,31 @@ export default class Api {
         likes: [],
       }),
     })
-      .then((response) => response.json())
-      .then((json) => console.log(json));
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        return Promise.reject(`Error: ${response.status}`);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
   likes() {
     return fetch(`${this._url}/cards`, {
       headers: {
         authorization: this._authorization,
       },
-    }).then((res) => {
-      return res.json();
-    });
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        return Promise.reject(`Error: ${response.status}`);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
   deleteCard(cardId) {
     return fetch(`${this._url}/cards/${cardId}`, {
@@ -66,7 +103,48 @@ export default class Api {
         authorization: this._authorization,
       },
     })
-      .then((response) => response.json())
-      .then((json) => console.log(json));
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        return Promise.reject(`Error: ${response.status}`);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+  putLike(cardId) {
+    return fetch(`${this._url}/cards/likes/${cardId}`, {
+      method: "PUT",
+      headers: {
+        authorization: this._authorization,
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        return Promise.reject(`Error: ${response.status}`);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+  deleteLike() {
+    return fetch(`${this._url}/cards/likes/${cardId}`, {
+      method: "DELETE",
+      headers: {
+        authorization: this._authorization,
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        return Promise.reject(`Error: ${response.status}`);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 }
