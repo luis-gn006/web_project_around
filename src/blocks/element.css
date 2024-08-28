@@ -10,6 +10,7 @@
   height: 282px;
   border-top-left-radius: 3%;
   border-top-right-radius: 3%;
+  display: flex;
 }
 .element__button-trash {
   position: absolute;
@@ -21,9 +22,7 @@
   border: none;
   top: 6%;
   right: -15%;
-  filter: drop-shadow(
-    0 0 10px #000000ce
-  );
+  filter: drop-shadow(0 0 10px #000000ce);
 }
 .element__button-trash-hide {
   display: none;
@@ -41,6 +40,7 @@
   padding-top: 11%;
   padding-bottom: 13%;
   width: 282px;
+  height: 22px;
   border-bottom-left-radius: 3%;
   border-bottom-right-radius: 3%;
 }
@@ -74,7 +74,7 @@
   filter: drop-shadow(0 4px 4px #000);
   cursor: pointer;
 }
-.element__likes{
+.element__likes {
   color: #000;
   margin: 0;
 }
