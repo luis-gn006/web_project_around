@@ -24,6 +24,7 @@ import {
   apiTriple,
   deleteFormPopup,
   avatarFormPopup,
+  avatarFormValidation,
 } from "../index.js";
 import UserInfo from "./components/UserInfo.js";
 
@@ -102,6 +103,7 @@ addButton.addEventListener("click", function () {
 });
 avatarEditButton.addEventListener("click", function () {
   avatarFormPopup.open();
-})
+  avatarFormValidation.resetValidation();
+});
 
 export { elementsArea };

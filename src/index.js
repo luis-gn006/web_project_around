@@ -97,3 +97,9 @@ export const imageFormValidation = new FormValidator(
   formSelectorImage
 );
 imageFormValidation.enableValidation();
+const formSelectorAvatar = document.querySelector(".popup__form-avatar");
+export const avatarFormValidation = new FormValidator(
+  formConfig,
+  formSelectorAvatar
+);
+avatarFormValidation.enableValidation();
