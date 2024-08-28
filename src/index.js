@@ -7,6 +7,7 @@ import {
   popupImage,
   popupElements,
   popupProfile,
+  popupAvatar,
   profileJob,
   profileName,
   nameForm,
@@ -79,6 +80,7 @@ apiTriple.getUserInfo().then((user) => {
 });
 //Instancias Popups
 export const profileFormPopup = new PopupWithForm(popupProfile);
+export const avatarFormPopup = new PopupWithForm(popupAvatar);
 export const elementFormPopup = new PopupWithForm(popupElements);
 export const deleteFormPopup = new PopupWithConfirmation(popupDelete);
 

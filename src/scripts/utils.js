@@ -10,6 +10,7 @@ import {
   inputLink,
   addButton,
   editButton,
+  avatarEditButton,
 } from "./utils/constants.js";
 import Section from "./components/Section.js";
 import Card from "./components/Card.js";
@@ -22,6 +23,7 @@ import {
   imagePopup,
   apiTriple,
   deleteFormPopup,
+  avatarFormPopup,
 } from "../index.js";
 import UserInfo from "./components/UserInfo.js";
 
@@ -98,5 +100,8 @@ addButton.addEventListener("click", function () {
   elementFormPopup.open();
   imageFormValidation.resetValidation();
 });
+avatarEditButton.addEventListener("click", function () {
+  avatarFormPopup.open();
+})
 
 export { elementsArea };

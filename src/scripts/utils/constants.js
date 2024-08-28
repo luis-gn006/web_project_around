@@ -1,6 +1,8 @@
 const editButton = document.querySelector(".profile__button-edit");
+const avatarEditButton = document.querySelector(".profile__avatar-edit");
 const addButton = document.querySelector(".profile__button-add");
 const popupProfile = document.querySelector(".popup-profile");
+const popupAvatar = document.querySelector(".popup-profile-avatar");
 const popupElements = document.querySelector(".popup-elements");
 const popupImage = document.querySelector(".popup-image-fullscreen");
 const popupDelete = document.querySelector(".popup-delete-card");
@@ -56,7 +58,9 @@ export {
   nameForm,
   jobForm,
   popupProfile,
+  popupAvatar,
   editButton,
+  avatarEditButton,
   popupElements,
   addButton,
   profileForm,
