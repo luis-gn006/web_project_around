@@ -80,22 +80,6 @@ export default class Api {
         console.log(error);
       });
   }
-  likes() {
-    return fetch(`${this._url}/cards`, {
-      headers: {
-        authorization: this._authorization,
-      },
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-        return Promise.reject(`Error: ${response.status}`);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
   deleteCard(cardId) {
     return fetch(`${this._url}/cards/${cardId}`, {
       method: "DELETE",
@@ -130,7 +114,7 @@ export default class Api {
         console.log(error);
       });
   }
-  deleteLike() {
+  deleteLike(cardId) {
     return fetch(`${this._url}/cards/likes/${cardId}`, {
       method: "DELETE",
       headers: {

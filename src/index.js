@@ -37,26 +37,26 @@ apiTriple.getUserInfo().then((user) => {
         items: cards,
         renderer: (item) => {
           console.log(item.owner._id);
-          const card = new Card(
-            item,
-            item.likes.length,
-            ".element__template",
-            {
-              handleCardClick: () => {
-                imagePopup.open(item.link, item.name);
-              },
+          const card = new Card(item, ".element__template", user, {
+            handleCardClick: () => {
+              imagePopup.open(item.link, item.name);
             },
-            { handleButtonTrash: user._id == item.owner._id },
-            {
-              handlePopupDelete: (cardId, callback) => {
-                deleteFormPopup.open(() => {
-                  apiTriple.deleteCard(cardId).then(() => {
-                    callback();
-                  });
+            handleButtonTrash: user._id == item.owner._id,
+            handlePopupDelete: (cardId, callback) => {
+              console.log(cardId);
+              deleteFormPopup.open(() => {
+                apiTriple.deleteCard(cardId).then(() => {
+                  callback();
                 });
-              },
-            }
-          );
+              });
+            },
+            handleCardLike: (cardId) => {
+              return apiTriple.putLike(cardId);
+            },
+            handleCardDislike: (cardId) => {
+              return apiTriple.deleteLike(cardId);
+            },
+          });
           const cardElement = card.generateCard();
           defaultCardList.addItem(cardElement);
         },
@@ -77,7 +77,7 @@ apiTriple.getUserInfo().then((user) => {
 
   profileInfo.setUserInfoProfile(profileName, profileJob);
 });
-//Popups instancias
+//Instancias Popups
 export const profileFormPopup = new PopupWithForm(popupProfile);
 export const elementFormPopup = new PopupWithForm(popupElements);
 export const deleteFormPopup = new PopupWithConfirmation(popupDelete);
