@@ -131,4 +131,25 @@ export default class Api {
         console.log(error);
       });
   }
+  patchUserAvatar(avatarLink) {
+    return fetch(`${this._url}/users/me/avatar`, {
+      method: "PATCH",
+      headers: {
+        authorization: this._authorization,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        avatar: avatarLink,
+      }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        return Promise.reject(`Error: ${response.status}`);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 }

@@ -11,6 +11,9 @@ import {
   addButton,
   editButton,
   avatarEditButton,
+  avatarForm,
+  avatarLink,
+  avatarImage,
 } from "./utils/constants.js";
 import Section from "./components/Section.js";
 import Card from "./components/Card.js";
@@ -104,6 +107,13 @@ addButton.addEventListener("click", function () {
 avatarEditButton.addEventListener("click", function () {
   avatarFormPopup.open();
   avatarFormValidation.resetValidation();
+});
+
+//funcion remplazar imagen avatar
+avatarForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  apiTriple.patchUserAvatar(avatarLink.value);
+  avatarImage.src = avatarLink.value;
 });
 
 export { elementsArea };

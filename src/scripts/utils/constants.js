@@ -9,12 +9,15 @@ const popupDelete = document.querySelector(".popup-delete-card");
 const inputTitle = popupElements.querySelector(".popup__form-title");
 const inputLink = popupElements.querySelector(".popup__form-link");
 const elementForm = popupElements.querySelector(".popup__form-image");
+const avatarForm = document.querySelector(".popup__form-avatar");
+const avatarLink = document.querySelector(".popup__profile-avatar");
 const elementsArea = document.querySelector(".elements");
 const profileForm = popupProfile.querySelector(".popup__form");
 const profileName = document.querySelector(".profile__name");
 const profileJob = document.querySelector(".profile__job");
 const nameForm = document.querySelector(".popup__form-name");
 const jobForm = document.querySelector(".popup__form-job");
+const avatarImage = document.querySelector(".profile__avatar");
 
 const initialCards = [
   {
@@ -66,10 +69,13 @@ export {
   profileForm,
   elementsArea,
   elementForm,
+  avatarForm,
+  avatarLink,
+  avatarImage,
   inputTitle,
   inputLink,
   popupImage,
   initialCards,
   formConfig,
-  popupDelete
+  popupDelete,
 };

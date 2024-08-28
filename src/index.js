@@ -15,6 +15,7 @@ import {
   initialCards,
   formConfig,
   popupDelete,
+  avatarImage,
 } from "./scripts/utils/constants.js";
 import PopupWithImage from "./scripts/components/PopupWithImage.js";
 import PopupWithForm from "./scripts/components/PopupWithForm.js";
@@ -31,6 +32,7 @@ export const apiTriple = new Api(
 );
 
 apiTriple.getUserInfo().then((user) => {
+  console.log(user);
   apiTriple.getInitialCards().then((cards) => {
     console.log(cards);
     const defaultCardList = new Section(
@@ -75,9 +77,12 @@ apiTriple.getUserInfo().then((user) => {
     userName: user.name,
     userJob: user.about,
   });
+  //cargar avatr profile
+  avatarImage.src = user.avatar;
 
   profileInfo.setUserInfoProfile(profileName, profileJob);
 });
+
 //Instancias Popups
 export const profileFormPopup = new PopupWithForm(popupProfile);
 export const avatarFormPopup = new PopupWithForm(popupAvatar);
