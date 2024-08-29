@@ -134,4 +134,15 @@ avatarForm.addEventListener("submit", function (event) {
   avatarImage.src = avatarLink.value;
 });
 
-export { elementsArea };
+// funcion loader
+const elementsSection = document.querySelector(".elements");
+const spinner = document.querySelector(".spinner");
+function renderLoading(isLoading) {
+  if (isLoading) {
+    spinner.classList.add("spinner__visible");
+  } else {
+    spinner.classList.remove("spinner__visible");
+  }
+}
+
+export { elementsArea, renderLoading };

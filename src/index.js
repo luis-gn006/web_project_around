@@ -1,7 +1,7 @@
 import "./pages/index.css";
 import Card from "./scripts/components/Card.js";
 import FormValidator from "./scripts/components/FormValidator.js";
-import { elementsArea } from "./scripts/utils.js";
+import { elementsArea, renderLoading } from "./scripts/utils.js";
 import Section from "./scripts/components/Section.js";
 import {
   popupImage,
@@ -29,7 +29,7 @@ export const apiTriple = new Api(
 );
 
 apiTriple.getUserInfo().then((user) => {
-  console.log(user);
+  renderLoading(true);
   apiTriple.getInitialCards().then((cards) => {
     console.log(cards);
     const defaultCardList = new Section(
@@ -67,10 +67,13 @@ apiTriple.getUserInfo().then((user) => {
       elementsArea
     );
     defaultCardList.renderer();
+    renderLoading(false);
   });
 });
 
 //cargar info profile
+profileName.textContent = "Cargando...";
+profileJob.textContent = "Cargando...";
 apiTriple.getUserInfo().then((user) => {
   console.log(user);
   const profileInfo = new UserInfo({
