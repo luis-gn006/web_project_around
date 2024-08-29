@@ -18,25 +18,25 @@ import {
   deleteButton,
   profileButton,
   avatarButton,
+  apiTriple,
+  profileFormPopup,
+  profileFormValidation,
+  imagePopup,
+  deleteFormPopup,
+  avatarFormPopup,
+  elementFormPopup,
+  imageFormValidation,
+  avatarFormValidation,
+  spinner,
 } from "./utils/constants.js";
 import Section from "./components/Section.js";
 import Card from "./components/Card.js";
-import {
-  profileFormPopup,
-  profileFormValidation,
-  elementFormPopup,
-  imageFormValidation,
-  imagePopup,
-  apiTriple,
-  deleteFormPopup,
-  avatarFormPopup,
-  avatarFormValidation,
-} from "../index.js";
 import UserInfo from "./components/UserInfo.js";
 
-//Función editar profile
-function handleProfileFormSubmit(evt) {
-  evt.preventDefault();
+//Función editar perfil
+profileForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  //Flag guardando perfil
   profileButton.textContent = "Guardando...";
   profileName.textContent = nameForm.value;
   profileJob.textContent = jobForm.value;
@@ -44,13 +44,12 @@ function handleProfileFormSubmit(evt) {
     profileButton.textContent = "Guardar";
     profileFormPopup.close();
   });
-}
-profileForm.addEventListener("submit", handleProfileFormSubmit);
+});
 
-//Función agregar imagen
-
+//Función agregar tarjeta
 elementForm.addEventListener("submit", function (event) {
   event.preventDefault();
+  //Flag creando tarjeta
   createButton.textContent = "Creando...";
   apiTriple
     .postNewCard(inputTitle.value, inputLink.value)
@@ -60,15 +59,14 @@ elementForm.addEventListener("submit", function (event) {
           {
             items: [cards],
             renderer: (item) => {
-              console.log(item.owner._id);
               const card = new Card(item, ".element__template", user, {
                 handleCardClick: () => {
                   imagePopup.open(item.link, item.name);
                 },
                 handleButtonTrash: user._id == item.owner._id,
                 handlePopupDelete: (cardId, callback) => {
-                  console.log(cardId);
                   deleteFormPopup.open(() => {
+                    //Flag borrar tarjeta
                     deleteButton.textContent = "Borrando...";
                     apiTriple.deleteCard(cardId).then(() => {
                       callback();
@@ -100,16 +98,14 @@ elementForm.addEventListener("submit", function (event) {
   elementForm.reset();
 });
 
+//Función actualizar información del perfil
 editButton.addEventListener("click", function () {
   profileFormPopup.open();
-  //Cargar info popupprofile
   apiTriple.getUserInfo().then((user) => {
-    console.log(user);
     const profileInfo = new UserInfo({
       userName: user.name,
       userJob: user.about,
     });
-
     profileInfo.setUserInfoForm(nameForm, jobForm);
   });
   profileFormValidation.resetValidation();
@@ -123,7 +119,7 @@ avatarEditButton.addEventListener("click", function () {
   avatarFormValidation.resetValidation();
 });
 
-//funcion remplazar imagen avatar
+//Función remplazar imagen de avatar
 avatarForm.addEventListener("submit", function (event) {
   event.preventDefault();
   avatarButton.textContent = "Guardando...";
@@ -134,9 +130,7 @@ avatarForm.addEventListener("submit", function (event) {
   avatarImage.src = avatarLink.value;
 });
 
-// funcion loader
-const elementsSection = document.querySelector(".elements");
-const spinner = document.querySelector(".spinner");
+//Función activar spinner
 function renderLoading(isLoading) {
   if (isLoading) {
     spinner.classList.add("spinner__visible");
