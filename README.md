@@ -1,10 +1,10 @@
 # Tripleten web_project_around
 
-# Proyecto realizado en el bootcamp de desarrollo web de Tripleten. Realizado con HTML , CSS y JS. El proyecto fue realizado en VSS (Visual Studio Code)
+# Proyecto realizado en el bootcamp de desarrollo web de Tripleten. Realizado con HTML, CSS, JS y Webpack. El proyecto fue realizado en VSS (Visual Studio Code)
 
-## De que trata?
+## ¿De qué se trata?
 
-### Se realizó una página interactiva con semejanza a una red social, el usuario podrá añadir, eliminar o dar like a las fotos , al igual que editar su nombre de usuario e informacion acerca de si mismo.
+### Se realizó una página interactiva con semejanza a una red social. El usuario puede añadir, eliminar o dar like a las fotos, al igual que editar su nombre de usuario e información acerca de sí mismo, todo esto a través de una API.
 
 ## El proyecto se adapta en las siguientes resoluciones:
 
@@ -20,10 +20,10 @@
 
 ## Aprendizaje:
 
-### Este es mi primer proyecto en el que se implementará Javascript, como muestra de ello se va a programar una ventana modal con formularios de información del usuario. Lo más importante de esto, es que los datos guardados si se reflejen en la página.
+### Estes es mi primer poryecto usando JS en el cual se empleo POO, asincronia con conexion a una API. Tambien se uso Webpack para el empaquetado del proeycto. Hubo muchos procesos de refactorizacion para poner en practica clases y practivas más avanzadas de JS.
 
 ## Link de Github pages para visualizar mi pagina: https://luis-gn006.github.io/web_project_around/index.html
 
 # © Luis Gonzalez
 
-# Saludos!
+# Espero que disfruten de este proyecto tanto como disfrute haciéndolo. ¡Saludos!
