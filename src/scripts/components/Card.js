@@ -41,17 +41,23 @@ export default class Card {
     this._element.querySelector(".element__name").textContent = this._name;
 
     if (this._data.likes.some((like) => like._id === this._user._id)) {
-      this._element.querySelector(".element__button-like").classList.add("element__button-like-active");
+      this._element
+        .querySelector(".element__button-like")
+        .classList.add("element__button-like-active");
     } else {
-      this._element.querySelector(".element__button-like").classList.remove("element__button-like-active");
+      this._element
+        .querySelector(".element__button-like")
+        .classList.remove("element__button-like-active");
     }
-
 
     if (this._data.likes.length == 0) {
       this._element.querySelector(".element__likes").textContent = [];
-      this._element.querySelector(".element__button-like").classList.remove("element__button-like-active");
+      this._element
+        .querySelector(".element__button-like")
+        .classList.remove("element__button-like-active");
     } else {
-      this._element.querySelector(".element__likes").textContent = this._data.likes.length;
+      this._element.querySelector(".element__likes").textContent =
+        this._data.likes.length;
     }
 
     this._element.querySelector(
@@ -96,16 +102,19 @@ export default class Card {
       this._handleCardDislike(this._id).then((card) => {
         this._data = card;
         evt.target.classList.remove("element__button-like-active");
-        if (this._data.likes.length  == 0) {
+        if (this._data.likes.length == 0) {
           this._element.querySelector(".element__likes").textContent = [];
         } else {
-          this._element.querySelector(".element__likes").textContent = this._data.likes.length;}
+          this._element.querySelector(".element__likes").textContent =
+            this._data.likes.length;
+        }
       });
     } else {
       this._handleCardLike(this._id).then((card) => {
         this._data = card;
         evt.target.classList.add("element__button-like-active");
-        this._element.querySelector(".element__likes").textContent = this._data.likes.length;
+        this._element.querySelector(".element__likes").textContent =
+          this._data.likes.length;
       });
     }
   }

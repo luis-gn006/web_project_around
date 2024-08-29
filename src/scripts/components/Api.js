@@ -57,17 +57,16 @@ export default class Api {
         console.log(error);
       });
   }
-  postNewCard(cardName, cardlink) {
+  postNewCard(name, link) {
     return fetch(`${this._url}/cards`, {
-      method: "POST",
       headers: {
         authorization: this._authorization,
         "Content-Type": "application/json",
       },
+      method: "POST",
       body: JSON.stringify({
-        name: cardName,
-        link: cardlink,
-        likes: [],
+        name,
+        link,
       }),
     })
       .then((response) => {

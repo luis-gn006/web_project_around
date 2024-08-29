@@ -22,7 +22,6 @@ export default class PopupWithForm extends Popup {
     const form = this.popupSelector.querySelector(".popup__form");
     form.addEventListener("submit", (event) => {
       event.preventDefault();
-      this.close();
     });
   }
 }

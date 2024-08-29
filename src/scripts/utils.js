@@ -14,12 +14,15 @@ import {
   avatarForm,
   avatarLink,
   avatarImage,
+  createButton,
+  deleteButton,
+  profileButton,
+  avatarButton,
 } from "./utils/constants.js";
 import Section from "./components/Section.js";
 import Card from "./components/Card.js";
 import {
   profileFormPopup,
-  //profileInfo,
   profileFormValidation,
   elementFormPopup,
   imageFormValidation,
@@ -34,9 +37,13 @@ import UserInfo from "./components/UserInfo.js";
 //Función editar profile
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
+  profileButton.textContent = "Guardando...";
   profileName.textContent = nameForm.value;
   profileJob.textContent = jobForm.value;
-  apiTriple.patchUserInfo(nameForm.value, jobForm.value);
+  apiTriple.patchUserInfo(nameForm.value, jobForm.value).finally(() => {
+    profileButton.textContent = "Guardar";
+    profileFormPopup.close();
+  });
 }
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 
@@ -44,46 +51,53 @@ profileForm.addEventListener("submit", handleProfileFormSubmit);
 
 elementForm.addEventListener("submit", function (event) {
   event.preventDefault();
-  let data = [
-    {
-      link: inputLink.value,
-      name: inputTitle.value,
-    },
-  ];
-  elementForm.reset();
-  const newCardElement = new Section(
-    {
-      items: data,
-      renderer: (item) => {
-        console.log(item);
-        apiTriple.postNewCard(item.name, item.link);
-        const card = new Card(
-          item,
-          [],
-          ".element__template",
+  createButton.textContent = "Creando...";
+  apiTriple
+    .postNewCard(inputTitle.value, inputLink.value)
+    .then((cards) => {
+      apiTriple.getUserInfo().then((user) => {
+        const newCardElement = new Section(
           {
-            handleCardClick: () => {
-              imagePopup.open(item.link, item.name);
+            items: [cards],
+            renderer: (item) => {
+              console.log(item.owner._id);
+              const card = new Card(item, ".element__template", user, {
+                handleCardClick: () => {
+                  imagePopup.open(item.link, item.name);
+                },
+                handleButtonTrash: user._id == item.owner._id,
+                handlePopupDelete: (cardId, callback) => {
+                  console.log(cardId);
+                  deleteFormPopup.open(() => {
+                    deleteButton.textContent = "Borrando...";
+                    apiTriple.deleteCard(cardId).then(() => {
+                      callback();
+                      deleteButton.textContent = "¿Estás seguro/a?";
+                      deleteFormPopup.close();
+                    });
+                  });
+                },
+                handleCardLike: (cardId) => {
+                  return apiTriple.putLike(cardId);
+                },
+                handleCardDislike: (cardId) => {
+                  return apiTriple.deleteLike(cardId);
+                },
+              });
+              const cardElement = card.generateCard();
+              newCardElement.addItemPrep(cardElement);
             },
           },
-          { handleButtonTrash: true },
-          {
-            handlePopupDelete: (cardId, callback) => {
-              deleteFormPopup.open(() => {
-                apiTriple.deleteCard(cardId).then(() => {
-                  callback();
-                });
-              });
-            },
-          }
+          elementsArea
         );
-        const cardElement = card.generateCard();
-        newCardElement.addItemPrep(cardElement);
-      },
-    },
-    elementsArea
-  );
-  newCardElement.renderer();
+        newCardElement.renderer();
+      });
+    })
+    .finally(() => {
+      createButton.textContent = "Crear";
+      elementFormPopup.close();
+    });
+  elementForm.reset();
 });
 
 editButton.addEventListener("click", function () {
@@ -112,7 +126,11 @@ avatarEditButton.addEventListener("click", function () {
 //funcion remplazar imagen avatar
 avatarForm.addEventListener("submit", function (event) {
   event.preventDefault();
-  apiTriple.patchUserAvatar(avatarLink.value);
+  avatarButton.textContent = "Guardando...";
+  apiTriple.patchUserAvatar(avatarLink.value).finally(() => {
+    avatarButton.textContent = "Guardar";
+    avatarFormPopup.close();
+  });
   avatarImage.src = avatarLink.value;
 });
 

@@ -10,9 +10,6 @@ import {
   popupAvatar,
   profileJob,
   profileName,
-  nameForm,
-  jobForm,
-  initialCards,
   formConfig,
   popupDelete,
   avatarImage,
@@ -48,8 +45,11 @@ apiTriple.getUserInfo().then((user) => {
             handlePopupDelete: (cardId, callback) => {
               console.log(cardId);
               deleteFormPopup.open(() => {
+                deleteButton.textContent = "Borrando...";
                 apiTriple.deleteCard(cardId).then(() => {
                   callback();
+                  deleteButton.textContent = "¿Estás seguro/a?";
+                  deleteFormPopup.close();
                 });
               });
             },

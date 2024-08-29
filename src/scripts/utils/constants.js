@@ -18,6 +18,10 @@ const profileJob = document.querySelector(".profile__job");
 const nameForm = document.querySelector(".popup__form-name");
 const jobForm = document.querySelector(".popup__form-job");
 const avatarImage = document.querySelector(".profile__avatar");
+const createButton = document.querySelector(".popup__create-button");
+const deleteButton = document.querySelector(".popup__delete-button");
+const avatarButton = document.querySelector(".popup__save-button-avatar");
+const profileButton = document.querySelector(".popup__save-button-profile");
 
 const initialCards = [
   {
@@ -78,4 +82,8 @@ export {
   initialCards,
   formConfig,
   popupDelete,
+  createButton,
+  deleteButton,
+  avatarButton,
+  profileButton,
 };
