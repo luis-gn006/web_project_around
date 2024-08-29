@@ -10,6 +10,9 @@ import {
   profileFormValidation,
   imageFormValidation,
   avatarFormValidation,
+  imagePopup,
+  deleteFormPopup,
+  deleteButton,
 } from "./scripts/utils/constants.js";
 import UserInfo from "./scripts/components/UserInfo.js";
 
