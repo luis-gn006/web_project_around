@@ -28,7 +28,7 @@ const createButton = document.querySelector(".popup__create-button");
 const deleteButton = document.querySelector(".popup__delete-button");
 const avatarButton = document.querySelector(".popup__save-button-avatar");
 const profileButton = document.querySelector(".popup__save-button-profile");
-const spinner = document.querySelector(".spinner");
+const spinners = document.querySelectorAll(".spinner");
 
 const formConfig = {
   inputSelector: ".popup__form-input",
@@ -120,5 +120,5 @@ export {
   profileFormValidation,
   imageFormValidation,
   avatarFormValidation,
-  spinner,
+  spinners,
 };

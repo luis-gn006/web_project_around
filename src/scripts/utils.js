@@ -27,7 +27,7 @@ import {
   elementFormPopup,
   imageFormValidation,
   avatarFormValidation,
-  spinner,
+  spinners,
 } from "./utils/constants.js";
 import Section from "./components/Section.js";
 import Card from "./components/Card.js";
@@ -133,9 +133,13 @@ avatarForm.addEventListener("submit", function (event) {
 //Función activar spinner
 function renderLoading(isLoading) {
   if (isLoading) {
-    spinner.classList.add("spinner__visible");
+    spinners.forEach((element) => {
+      element.classList.add("spinner__visible");
+    });
   } else {
-    spinner.classList.remove("spinner__visible");
+    spinners.forEach((element) => {
+      element.classList.remove("spinner__visible");
+    });
   }
 }
 
